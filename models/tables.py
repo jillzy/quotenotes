@@ -9,6 +9,10 @@
 
 import datetime
 
+
+def get_user_email():
+    return auth.user.email if auth.user else None
+
 db.define_table('post',
                 Field('user_email', default=auth.user.email if auth.user_id else None),
                 Field('post_content', 'text'),
@@ -16,7 +20,8 @@ db.define_table('post',
                 Field('updated_on', 'datetime', update=datetime.datetime.utcnow()),
                 )
 
-# I don't want to display the user email by default in all forms.
+# I don't want to display the user id or email by default in all forms.
+db.post.id.readable = db.post.id.writable = False
 db.post.user_email.readable = db.post.user_email.writable = False
 db.post.post_content.requires = IS_NOT_EMPTY()
 db.post.created_on.readable = db.post.created_on.writable = False
