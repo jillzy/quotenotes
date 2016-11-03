@@ -93,7 +93,11 @@ var app = function() {
         console.log(self.vue.is_editing_post)
     };
 
-    self.edit_post = function() {
+    self.handle_form_stuff = function () {
+        console.log("handle form");
+    }
+
+    self.edit_post = function(post_id) {
         /*$.post(del_post_url,
             {
                 post_id: post_id
@@ -114,6 +118,7 @@ var app = function() {
             }
         )*/
         console.log("edit post");
+        console.log(post_id)
     };
 
     // Complete as needed.
@@ -131,13 +136,15 @@ var app = function() {
             form_user_email: null,
             form_created_on: null,
             form_updated_on: null,
-            form_user_name: null
+            form_user_name: null,
+            form_edit_content:null
 
         },
         methods: {
             get_more: self.get_more,
             add_post_button: self.add_post_button,
             edit_post_button: self.edit_post_button,
+            handle_form_stuff: self.handle_form_stuff,
             get_posts: self.get_posts,
             add_post: self.add_post,
             del_post: self.delete_post,

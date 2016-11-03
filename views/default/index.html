@@ -48,13 +48,13 @@
                         <form action="#" v-on:submit.prevent="edit_post" class="form-horizontal" enctype="multipart/form-data" method="edit">
                             <div class="form-group" id="no_table_artist__row">
                                 <div>
-                                    <input class="form-control string" id="no_table_artist" v-model="form_post_content" placeholder="your edited message here" type="text" />
+                                    <input class="form-control string" id="no_table_artist" v-model="form_edit_content" placeholder="your edited message here" type="text" />
                                     <span class="help-block"></span>
                                 </div>
                             </div>
                             <div class="form-group" id="submit_record__row">
                                 <div>
-                                    <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Submit"/>
+                                    <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Submit" v-on:click="handle_form_stuff()"/>
                                 </div>
                             </div>
                         </form>
@@ -65,8 +65,8 @@
                     <td>${post.created_on}</td>
                     <td>${post.updated_on}</td>
                     <td><i class="fa fa-trash-o" v-on:click="del_post(post.id)"></i></td>
-                    <td><i class="fa fa-pencil" v-if="!is_adding_post" v-on:click="edit_post_button()" v-bind:class="{'disabled': !logged_in}"></i></td>
-                    <td><i class="fa fa-pencil" v-if="is_adding_post" v-on:click="edit_post_button()"></i></td>
+                    <td><i class="fa fa-pencil" v-if="!is_adding_post" v-on:click="edit_post_button(post_id)" v-bind:class="{'disabled': !logged_in}"></i></td>
+                    <td><i class="fa fa-pencil" v-if="is_adding_post" v-on:click="edit_post_button(post_id)"></i></td>
                 </tr>
                 </tbody>
             </table>
