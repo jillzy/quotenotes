@@ -3,7 +3,7 @@
 {{block head}}
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
 <script>
-    var posts_url = "{{=URL('api', 'get_posts', user_signature=True)}}";
+    var posts_url = "{{=URL('api', 'get_posts')}}";
     var add_post_url = "{{=URL('api', 'add_post', user_signature=True)}}";
     var del_post_url = "{{=URL('api', 'del_post', user_signature=True)}}";
 </script>
@@ -56,11 +56,9 @@
                 <tr v-for="post in posts">
                     <td></td>
                     <td>${post.post_content}</td>
-                    <td>${post.album}</td>
-                    <td>${post.title}</td>
-                    <td>${post.duration}</td>
-                    <td>${post.rating}</td>
-                    <td>${post.num_plays}</td>
+                    <td>${post.user_email}</td>
+                    <td>${post.created_on}</td>
+                    <td>${post.updated_on}</td>
                     <td><i class="fa fa-trash-o" v-on:click="delete_post(post.id)"></i></td>
                 </tr>
                 </tbody>
