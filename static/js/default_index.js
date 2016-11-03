@@ -87,6 +87,11 @@ var app = function() {
         )
     };
 
+    self.edit_post_button = function () {
+        // The button to add a post has been pressed.
+        self.vue.is_editing_post = !self.vue.is_editing_post;
+        console.log(self.vue.is_editing_post)
+    };
 
     self.edit_post = function() {
         /*$.post(del_post_url,
@@ -97,14 +102,14 @@ var app = function() {
                 var idx = null;
                 for (var i = 0; i < self.vue.posts.length; i++) {
                     if (self.vue.posts[i].id === post_id) {
-                        // If I set this to i, it won't work, as the if below will
-                        // return false for items in first position.
-                        idx = i + 1;
-                        break;
+
+                        post_content: self.vue.form_post_content,
+                        user_email: self.vue.form_user_email,
+                        user_name: self.vue.form_user_name,
+                        created_on: self.vue.form_created_on,
+                        updated_on: self.vue.form_updated_on
+
                     }
-                }
-                if (idx) {
-                    self.vue.posts.splice(idx - 1, 1);
                 }
             }
         )*/
@@ -119,6 +124,7 @@ var app = function() {
         data: {
             has_more: false,
             is_adding_post: false,
+            is_editing_post: false,
             posts: [],
             logged_in: false,
             form_post_content: null,
@@ -131,6 +137,7 @@ var app = function() {
         methods: {
             get_more: self.get_more,
             add_post_button: self.add_post_button,
+            edit_post_button: self.edit_post_button,
             get_posts: self.get_posts,
             add_post: self.add_post,
             del_post: self.delete_post,
