@@ -56,6 +56,7 @@ var app = function() {
             {
                 post_content: self.vue.form_post_content,
                 user_email: self.vue.form_user_email,
+                user_name: self.vue.form_user_name,
                 created_on: self.vue.form_created_on,
                 updated_on: self.vue.form_updated_on
             },
@@ -100,7 +101,8 @@ var app = function() {
             form_post_content: null,
             form_user_email: null,
             form_created_on: null,
-            form_updated_on: null
+            form_updated_on: null,
+            form_user_name: null
 
         },
         methods: {
