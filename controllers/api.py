@@ -9,7 +9,7 @@ def get_posts():
     # We just generate a lot of of data.
     posts = []
     has_more = False
-    rows = db().select(db.post.ALL, limitby=(start_idx, end_idx + 1))
+    rows = db().select(db.post.ALL, orderby=~db.post.created_on, limitby=(start_idx, end_idx + 1))
     for i, r in enumerate(rows):
         if i < end_idx - start_idx:
             p = dict(
@@ -36,8 +36,9 @@ def add_post():
     t_id = db.post.insert(
         post_content=request.vars.post_content,
         user_email=request.vars.user_email,
-        created_on=request.vars.created_on,
-        updated_on=request.vars.updated_on,
+        created_on=datetime.datetime.utcnow(),
+        updated_on=request.vars.updated_on
+#        updated_on=update=datetime.datetime.utcnow().strftime("%d/%m/%y %H:%M")
     )
     t = db.post(t_id)
     return response.json(dict(post=t))
