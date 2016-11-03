@@ -43,7 +43,6 @@ var app = function() {
         });
     };
 
-
     self.add_post_button = function () {
         // The button to add a post has been pressed.
         self.vue.is_adding_post = !self.vue.is_adding_post;
@@ -88,6 +87,30 @@ var app = function() {
         )
     };
 
+
+    self.edit_post = function() {
+        /*$.post(del_post_url,
+            {
+                post_id: post_id
+            },
+            function () {
+                var idx = null;
+                for (var i = 0; i < self.vue.posts.length; i++) {
+                    if (self.vue.posts[i].id === post_id) {
+                        // If I set this to i, it won't work, as the if below will
+                        // return false for items in first position.
+                        idx = i + 1;
+                        break;
+                    }
+                }
+                if (idx) {
+                    self.vue.posts.splice(idx - 1, 1);
+                }
+            }
+        )*/
+        console.log("edit post");
+    };
+
     // Complete as needed.
     self.vue = new Vue({
         el: "#vue-div",
@@ -110,7 +133,8 @@ var app = function() {
             add_post_button: self.add_post_button,
             get_posts: self.get_posts,
             add_post: self.add_post,
-            del_post: self.delete_post
+            del_post: self.delete_post,
+            edit_post: self.edit_post
         }
 
     });

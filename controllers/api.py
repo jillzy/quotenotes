@@ -51,3 +51,6 @@ def del_post():
     db(db.post.id == request.vars.post_id).delete()
     return "ok"
 
+@auth.requires_signature()
+def edit_post():
+    return "ok"
