@@ -22,7 +22,7 @@ def get_posts():
             posts.append(p)
         else:
             has_more = True
-    logged_in = auth.user_id is not None
+    logged_in = get_user_email() is not None
     return response.json(dict(
         posts=posts,
         logged_in=logged_in,
