@@ -28,7 +28,7 @@ var app = function() {
     }
 
     self.get_posts = function () {
-        $.getJSON(get_posts_url(0, 3), function (data) {
+        $.getJSON(get_posts_url(0, 4), function (data) {
             self.vue.posts = data.posts;
             self.vue.has_more = data.has_more;
             self.vue.logged_in = data.logged_in;
@@ -90,10 +90,16 @@ var app = function() {
     self.edit_post_button = function (post_id) {
         // The button to add a post has been pressed.
         self.vue.is_editing_post = !self.vue.is_editing_post;
+
         console.log(self.vue.is_editing_post);
         console.log(post_id);
         self.vue.the_id = post_id;
     };
+
+    self.handle_form_stuff2 = function() {
+        self.vue.is_editing_post = !self.vue.is_editing_post;
+        console.log("cancel!");
+    }
 
     self.handle_form_stuff = function () {
         $.post(edit_post_url,
@@ -186,7 +192,8 @@ var app = function() {
             get_posts: self.get_posts,
             add_post: self.add_post,
             del_post: self.delete_post,
-            edit_post: self.edit_post
+            edit_post: self.edit_post,
+            handle_form_stuff2: self.handle_form_stuff2
         }
 
     });
