@@ -64,13 +64,12 @@
                         </form>
                     </div>
                     <div id = "editing" v-if = "!is_editing_post">
-                        <td v-if="post.id != the_id">${post.post_content}</td>
+                        <td v-if="post.id != the_id || show_post">${post.post_content}&nbsp;&nbsp;</td>
                     </div>
-                        <td>${post.id}</td>
-                        <td>${post.user_email}</td>
-                        <td>${post.user_name}</td>
-                        <td>${post.created_on}</td>
-                        <td>${post.updated_on}</td>
+                        <td>${post.user_email}&nbsp;&nbsp;&nbsp;</td>
+                        <td>${post.user_name}&nbsp;&nbsp;&nbsp;</td>
+                        <td>${post.created_on}&nbsp;&nbsp;&nbsp;</td>
+                        <td>${post.updated_on}&nbsp;&nbsp;&nbsp;</td>
                         <td><i class="fa fa-trash-o" v-on:click="del_post(post.id)"></i></td>
                         <td><i class="fa fa-pencil" v-if="!is_editing_post" v-on:click="edit_post_button(post.id)" v-bind:class="{'disabled': !logged_in}"></i></td>
                         <!--<td><i class="fa fa-pencil" v-if="is_editing_post" v-on:click="edit_post_button(post.id)"></i></td>-->

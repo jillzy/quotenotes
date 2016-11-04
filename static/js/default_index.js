@@ -94,10 +94,12 @@ var app = function() {
         console.log(self.vue.is_editing_post);
         console.log(post_id);
         self.vue.the_id = post_id;
+        self.vue.show_post = false;
     };
 
     self.handle_form_stuff2 = function() {
         self.vue.is_editing_post = !self.vue.is_editing_post;
+        self.vue.show_post = true;
         console.log("cancel!");
     }
 
@@ -126,40 +128,9 @@ var app = function() {
                 self.vue.posts.unshift(data.post);
             });
 
-        /*console.log("handle form");
-        console.log(self.vue.form_edit_content);
-               $.post(edit_post_url,
-            {
-                post_id: post_id
-            },
-            function () {
-                console.log("handle form");
-                console.log(self.form_edit_content);
-            });*/
-        //console.log("handle form");
-        //console.log(self.vue.the_id);
     }
 
     self.edit_post = function(post_id) {
-        /*$.post(del_post_url,
-            {
-                post_id: post_id
-            },
-            function () {
-                var idx = null;
-                for (var i = 0; i < self.vue.posts.length; i++) {
-                    if (self.vue.posts[i].id === post_id) {
-
-                        post_content: self.vue.form_post_content,
-                        user_email: self.vue.form_user_email,
-                        user_name: self.vue.form_user_name,
-                        created_on: self.vue.form_created_on,
-                        updated_on: self.vue.form_updated_on
-
-                    }
-                }
-            }
-        )*/
         console.log("edit post");
         console.log(post_id)
     };
@@ -181,7 +152,8 @@ var app = function() {
             form_updated_on: null,
             form_user_name: null,
             form_edit_content:null,
-            the_id: null
+            the_id: null,
+            show_post:true
 
         },
         methods: {
