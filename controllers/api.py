@@ -53,13 +53,4 @@ def del_post():
 
 @auth.requires_signature()
 def edit_post():
-    t_id = db.post.insert(
-        post_content=request.vars.post_content,
-        user_email=auth.user.email,
-        user_name=get_user_name_from_email(auth.user.email),
-        created_on=datetime.datetime.utcnow(),
-        updated_on=request.vars.updated_on
-        #        updated_on=update=datetime.datetime.utcnow().strftime("%d/%m/%y %H:%M")
-    )
-    t = db.post(t_id)
-    return response.json(dict(post=t))
+    return "ok"
