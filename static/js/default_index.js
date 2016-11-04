@@ -94,7 +94,28 @@ var app = function() {
     };
 
     self.handle_form_stuff = function () {
-        console.log("handle form");
+        $.post(edit_post_url,
+            {
+                post_content: self.vue.form_edit_content,
+                user_email: self.vue.form_user_email,
+                user_name: self.vue.form_user_name,
+                created_on: self.vue.form_created_on,
+                updated_on: self.vue.form_updated_on
+            },
+            function (data) {
+                self.vue.posts.unshift(data.post);
+            });
+
+        /*console.log("handle form");
+        console.log(self.vue.form_edit_content);
+               $.post(edit_post_url,
+            {
+                post_id: post_id
+            },
+            function () {
+                console.log("handle form");
+                console.log(self.form_edit_content);
+            });*/
     }
 
     self.edit_post = function(post_id) {
@@ -137,7 +158,8 @@ var app = function() {
             form_created_on: null,
             form_updated_on: null,
             form_user_name: null,
-            form_edit_content:null
+            form_edit_content:null,
+            the_id: null
 
         },
         methods: {
