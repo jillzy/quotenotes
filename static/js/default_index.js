@@ -98,18 +98,24 @@ var app = function() {
         )
     };
 
-    self.edit_post_button = function (post_id, content, post_idx) {
+    self.edit_post_button = function (post_id, content, post_idx, poster_email) {
         // The button to add a post has been pressed.
+        if (self.vue.the_email == poster_email) {
+            self.vue.is_editing_post = true;
+            self.vue.show_post = false;
+        } else {
+            self.vue.is_editing_post = false;
+            self.vue.show_post = true;
+        }
         self.vue.the_post_idx = post_idx;
         self.vue.the_post = self.vue.posts[self.vue.the_idx];
-        self.vue.is_editing_post = !self.vue.is_editing_post;
+        //self.vue.is_editing_post = !self.vue.is_editing_post;
         self.vue.original_content = content;
         self.vue.form_edit_content = self.vue.original_content;
         console.log(self.vue.original_content);
         console.log(self.vue.is_editing_post);
         console.log(post_id);
         self.vue.the_id = post_id;
-        self.vue.show_post = false;
 
     };
 
@@ -168,7 +174,8 @@ var app = function() {
             show_post:true,
             original_content: null,
             is_user: false,
-            the_email: "None"
+            the_email: "None",
+            can_edit: false
 
         },
         methods: {
