@@ -32,6 +32,9 @@ var app = function() {
             self.vue.posts = data.posts;
             self.vue.has_more = data.has_more;
             self.vue.logged_in = data.logged_in;
+            if (data.email) {
+                self.vue.the_email = data.email;
+            }
         })
     };
 
@@ -81,10 +84,11 @@ var app = function() {
                 var idx = null;
                 for (var i = 0; i < self.vue.posts.length; i++) {
                     if (self.vue.posts[i].id === post_id) {
-                        // If I set this to i, it won't work, as the if below will
-                        // return false for items in first position.
-                        idx = i + 1;
-                        break;
+                         if (self.vue.the_email == self.vue.posts[i].user_email)
+                            // If I set this to i, it won't work, as the if below will
+                            // return false for items in first position.
+                            idx = i + 1;
+                            break;
                     }
                 }
                 if (idx) {
@@ -163,7 +167,8 @@ var app = function() {
             the_post_idx: null,
             show_post:true,
             original_content: null,
-            is_user: false
+            is_user: false,
+            the_email: "None"
 
         },
         methods: {

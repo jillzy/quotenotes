@@ -24,11 +24,19 @@ def get_posts():
         else:
             has_more = True
     logged_in = get_user_email() is not None
-    return response.json(dict(
-        posts=posts,
-        logged_in=logged_in,
-        has_more=has_more,
-    ))
+    if get_user_email() is not None:
+        return response.json(dict(
+            posts=posts,
+            logged_in=logged_in,
+            has_more=has_more,
+            email = get_user_email()
+        ))
+    else:
+        return response.json(dict(
+            posts=posts,
+            logged_in=logged_in,
+            has_more=has_more,
+        ))
 
 
 # Note that we need the URL to be signed, as this changes the db.
