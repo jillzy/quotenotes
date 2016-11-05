@@ -107,14 +107,11 @@ var app = function() {
             self.vue.is_editing_post = false;
             self.vue.show_post = true;
         }
+        console.log(post_idx);
         self.vue.the_post_idx = post_idx;
         self.vue.the_post = self.vue.posts[self.vue.the_idx];
-        //self.vue.is_editing_post = !self.vue.is_editing_post;
         self.vue.original_content = content;
         self.vue.form_edit_content = self.vue.original_content;
-        console.log(self.vue.original_content);
-        console.log(self.vue.is_editing_post);
-        console.log(post_id);
         self.vue.the_id = post_id;
 
     };
@@ -142,7 +139,8 @@ var app = function() {
                 post_content: self.vue.form_edit_content
             }
         );
-
+        console.log(self.vue.the_post_idx);
+        console.log(self.vue.posts[2].post_content);
     };
 
     self.handle_form_stuff2 = function () {
