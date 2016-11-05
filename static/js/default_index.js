@@ -120,8 +120,6 @@ var app = function() {
                 post_content: self.vue.form_edit_content
             }
         );
-        self.get_posts();
-        $("#vue-div").show();
     };
 
     self.handle_form_stuff2 = function () {
