@@ -69,8 +69,8 @@
                         <td>Posted by: ${post.user_name}&nbsp;&nbsp;&nbsp;</td>
                         <td>Posted on: ${post.created_on}&nbsp;&nbsp;&nbsp;</td>
                         <td>Updated on: ${post.updated_on}&nbsp;&nbsp;&nbsp;</td>
-                        <td><i class="fa fa-trash-o" v-on:click="del_post(post.id)" v-bind:class="{'disabled': !logged_in}"></i></td>
-                        <td><i class="fa fa-pencil" v-if="!is_editing_post" v-on:click="edit_post_button(post.id, post.post_content, post._idx)" v-bind:class="{'disabled': !logged_in}"></i></td>
+                        <td><i class="fa fa-trash-o" v-on:click="del_post(post.id)" v-if="logged_in" v-bind:class="{'disabled': !logged_in}"></i></td>
+                        <td><i class="fa fa-pencil" v-if="!is_editing_post && logged_in" v-on:click="edit_post_button(post.id, post.post_content, post._idx)" v-bind:class="{'disabled': !logged_in}"></i></td>
                         <!--<td><i class="fa fa-pencil" v-if="is_editing_post" v-on:click="edit_post_button(post.id)"></i></td>-->
 
                 </tr>

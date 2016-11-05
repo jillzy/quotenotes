@@ -164,7 +164,8 @@ var app = function() {
             the_post: null,
             the_post_idx: null,
             show_post:true,
-            original_content: null
+            original_content: null,
+            is_user: false
 
         },
         methods: {
