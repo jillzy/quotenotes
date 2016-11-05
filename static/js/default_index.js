@@ -124,6 +124,9 @@ var app = function() {
         $("#vue-div").show();
     };
 
+    self.handle_form_stuff2 = function () {
+        self.vue.is_editing_post = !self.vue.is_editing_post;
+    }
 
 
     function get_edit_url(start_idx, end_idx) {
