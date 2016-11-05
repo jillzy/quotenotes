@@ -53,4 +53,9 @@ def del_post():
 
 @auth.requires_signature()
 def edit_post():
+    post_id = int(request.vars.post_id)
+    t = db(db.post.id == post_id).select()#.first()
+    t.post_content = request.vars.post_content
+
+
     return "ok"

@@ -92,8 +92,10 @@ var app = function() {
         )
     };
 
-    self.edit_post_button = function (post_id, content) {
+    self.edit_post_button = function (post_id, content, post_idx) {
         // The button to add a post has been pressed.
+        self.vue.the_post_idx = post_idx;
+        self.vue.the_post = self.vue.posts[self.vue.the_idx];
         self.vue.is_editing_post = !self.vue.is_editing_post;
         self.vue.original_content = content;
         self.vue.form_edit_content = self.vue.original_content;
@@ -106,33 +108,35 @@ var app = function() {
     };
 
     self.handle_form_stuff2 = function() {
-        self.vue.is_editing_post = !self.vue.is_editing_post;
-        self.vue.show_post = true;
+        //self.vue.is_editing_post = !self.vue.is_editing_post;
+        //self.vue.show_post = true;
         console.log("cancel!");
     }
 
     self.handle_form_stuff = function () {
+        self.vue.is_editing_post = !self.vue.is_editing_post;
+        self.vue.show_post = true;
+        console.log("handle form");
         $.post(edit_post_url,
             {
-                post_id: self.vue.the_id
-            },
-            function () {
-                console.log(self.vue.the_id);
-                console.log(self.vue.form_edit_content);
-                //var post = self.vue.posts[post_idx];
-                //posts_url + '?' + $.param({post_id: the_id})
+                post_id: self.vue.the_id,
+                post_content: self.vue.form_edit_content
+            }
+        );
+        self.get_posts();
+        $("#vue-div").show();
+    };
 
-            /*    for (var i = 0; i < self.vue.posts.length; i++) {
-                    if (self.vue.posts[i].id === post_id) {
-                        // If I set this to i, it won't work, as the if below will
-                        // return false for items in first position.
-                        self.vue.posts[i].post_content = self.vue.form_edit_content;
-                        break;
-                    }
-                }*/
-            });
 
+
+    function get_edit_url(start_idx, end_idx) {
+        var pp = {
+            start_idx: start_idx,
+            end_idx: end_idx
+        };
+        return posts_url + "?" + $.param(pp);
     }
+
 
     self.edit_post = function(post_id) {
         console.log("edit post");
@@ -157,12 +161,15 @@ var app = function() {
             form_user_name: null,
             form_edit_content:null,
             the_id: null,
+            the_post: null,
+            the_post_idx: null,
             show_post:true,
             original_content: null
 
         },
         methods: {
             get_more: self.get_more,
+            get_edit_url: self.get_edit_url,
             clear_post_form: self.clear_post_form,
             add_post_button: self.add_post_button,
             edit_post_button: self.edit_post_button,
