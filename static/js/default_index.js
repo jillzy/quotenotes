@@ -87,14 +87,17 @@ var app = function() {
         )
     };
 
-    self.edit_post_button = function (post_id) {
+    self.edit_post_button = function (post_id, content) {
         // The button to add a post has been pressed.
         self.vue.is_editing_post = !self.vue.is_editing_post;
-
+        self.vue.original_content = content;
+        self.vue.form_edit_content = self.vue.original_content;
+        console.log(self.vue.original_content);
         console.log(self.vue.is_editing_post);
         console.log(post_id);
         self.vue.the_id = post_id;
         self.vue.show_post = false;
+
     };
 
     self.handle_form_stuff2 = function() {
@@ -109,23 +112,19 @@ var app = function() {
                 post_id: self.vue.the_id
             },
             function () {
-                var idx = null;
-                for (var i = 0; i < self.vue.posts.length; i++) {
+                console.log(self.vue.the_id);
+                console.log(self.vue.form_edit_content);
+                //var post = self.vue.posts[post_idx];
+                //posts_url + '?' + $.param({post_id: the_id})
+
+            /*    for (var i = 0; i < self.vue.posts.length; i++) {
                     if (self.vue.posts[i].id === post_id) {
                         // If I set this to i, it won't work, as the if below will
                         // return false for items in first position.
-                        self.vue.posts[i].post_content = self.vue.form_edit_content,
-                        self.vue.posts[i].user_email = self.vue.form_user_email,
-                        self.vue.posts[i].user_name = self.vue.form_user_name,
-                        self.vue.posts[i].created_on = self.vue.form_created_on,
-                        self.vue.posts[i].updated_on = self.vue.form_updated_on
-                        idx = i + 1;
+                        self.vue.posts[i].post_content = self.vue.form_edit_content;
                         break;
                     }
-                }
-            },
-            function (data) {
-                self.vue.posts.unshift(data.post);
+                }*/
             });
 
     }
@@ -153,7 +152,8 @@ var app = function() {
             form_user_name: null,
             form_edit_content:null,
             the_id: null,
-            show_post:true
+            show_post:true,
+            original_content: null
 
         },
         methods: {
