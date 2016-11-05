@@ -35,6 +35,7 @@ var app = function() {
             if (data.email) {
                 self.vue.the_email = data.email;
             }
+            enumerate(self.vue.posts);
         })
     };
 
@@ -43,6 +44,7 @@ var app = function() {
         $.getJSON(get_posts_url(num_posts, num_posts + 4), function (data) {
             self.vue.has_more = data.has_more;
             self.extend(self.vue.posts, data.posts);
+            enumerate(self.vue.posts);
         });
     };
 
@@ -71,6 +73,7 @@ var app = function() {
             function (data) {
                 $.web2py.enableElement($("#add_post_submit"));
                 self.vue.posts.unshift(data.post);
+                enumerate(self.vue.posts);
                 self.vue.form_post_content = "";
             });
     };
@@ -94,11 +97,12 @@ var app = function() {
                 if (idx) {
                     self.vue.posts.splice(idx - 1, 1);
                 }
+                enumerate(self.vue.posts);
             }
         )
     };
 
-    self.edit_post_button = function (post_id, content, post_idx, poster_email) {
+    self.edit_post_button = function (post_id, content, _idx, poster_email) {
         // The button to add a post has been pressed.
         if (self.vue.the_email == poster_email) {
             self.vue.is_editing_post = true;
@@ -107,8 +111,7 @@ var app = function() {
             self.vue.is_editing_post = false;
             self.vue.show_post = true;
         }
-        console.log(post_idx);
-        self.vue.the_post_idx = post_idx;
+        self.vue.the_post_idx = _idx;
         self.vue.the_post = self.vue.posts[self.vue.the_idx];
         self.vue.original_content = content;
         self.vue.form_edit_content = self.vue.original_content;
@@ -139,22 +142,13 @@ var app = function() {
                 post_content: self.vue.form_edit_content
             }
         );
-        console.log(self.vue.the_post_idx);
-        console.log(self.vue.posts[2].post_content);
+        self.vue.posts[self.vue.the_post_idx].post_content = self.vue.form_edit_content;
+        console.log(self.vue.posts[self.vue.the_post_idx].post_content);
     };
 
     self.handle_form_stuff2 = function () {
         self.vue.is_editing_post = !self.vue.is_editing_post;
     }
-
-
-/*    function get_edit_url(start_idx, end_idx) {
-        var pp = {
-            start_idx: start_idx,
-            end_idx: end_idx
-        };
-        return posts_url + "?" + $.param(pp);
-    }*/
 
 
     // Complete as needed.
