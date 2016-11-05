@@ -13,7 +13,6 @@
 <div class="main_content">
 
     <div id="vue-div" class="display:none">
-        add oil lots of oil
         <div class="button_bar">
             <button v-if="!is_adding_post" class="btn btn-danger btn-sm" v-on:click="add_post_button()" v-bind:class="{'disabled': !logged_in}">
             {{=icon_add}}Add post
@@ -45,8 +44,8 @@
                 <tbody>
                 <tr v-for="post in posts">
                     <td></td>
-                    <div v-if="is_editing_post" id="edit_post_div">
-                        <form action="#" v-on:submit.prevent="edit_post" class="form-horizontal" enctype="multipart/form-data" method="edit">
+                    <div id = "edit_form" v-if="is_editing_post" id="edit_post_div">
+                        <form action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
                             <div class="form-group" id="no_table_artist__row">
                                 <div>
                                     <input class="form-control string" id="no_table_artist" v-model="form_edit_content" type="text" />
@@ -58,21 +57,24 @@
                                     <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Submit" v-on:click="handle_form_stuff()"/>
                                 </div>
                                 <div>
-                                    <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Cancel" v-on:click="handle_form_stuff()"/>
+                                    <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Cancel" v-on:click="handle_form_stuff2()"/>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div id = "editing" v-if = "!is_editing_post">
-                        <td v-if="post.id != the_id || show_post">${post.post_content}&nbsp;&nbsp;</td>
+                    <div id = "post" v-if = "!is_editing_post">
+                        <td class = "content" v-if="post.id != the_id || show_post">${post.post_content}</td>
                     </div>
-                        <td>Posted by: ${post.user_name}&nbsp;&nbsp;&nbsp;</td>
-                        <td>Posted on: ${post.created_on}&nbsp;&nbsp;&nbsp;</td>
-                        <td>Updated on: ${post.updated_on}&nbsp;&nbsp;&nbsp;</td>
-                        <td><i class="fa fa-trash-o" v-on:click="del_post(post.id)" v-if="logged_in" v-bind:class="{'disabled': !logged_in}"></i></td>
-                        <td><i class="fa fa-pencil" v-if="!is_editing_post && logged_in" v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email)" v-bind:class="{'disabled': !logged_in}"></i></td>
-                        <!--<td><i class="fa fa-pencil" v-if="is_editing_post" v-on:click="edit_post_button(post.id)"></i></td>-->
-
+                    <div id = "info">
+                        <td class ="info">&nbsp;&nbsp;Posted by: ${post.user_name}&nbsp;&nbsp;</td>
+                        <td class ="info">Posted on: ${post.created_on}&nbsp;&nbsp;</td>
+                        <td class ="info">Updated on: ${post.updated_on}</td>
+                        <td class ="info">&nbsp;&nbsp;<i class="fa fa-trash-o" v-on:click="del_post(post.id)"
+                                             v-if="logged_in" v-bind:class="{'disabled': !logged_in}"></i>&nbsp;&nbsp;</td>
+                        <td class ="info"><i class="fa fa-pencil" v-if="!is_editing_post && logged_in"
+                                             v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email)"
+                                             v-bind:class="{'disabled': !logged_in}"></i>&nbsp;&nbsp;</td>
+                    </div>
                 </tr>
                 </tbody>
             </table>

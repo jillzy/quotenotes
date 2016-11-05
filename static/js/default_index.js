@@ -147,7 +147,8 @@ var app = function() {
     };
 
     self.handle_form_stuff2 = function () {
-        self.vue.is_editing_post = !self.vue.is_editing_post;
+        self.vue.is_editing_post = false;
+        self.vue.show_post = true;
     }
 
 
