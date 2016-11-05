@@ -62,11 +62,11 @@ var app = function() {
         // The submit button to add a post has been added.
         $.post(add_post_url,
             {
-                post_content: self.vue.form_post_content,
-                user_email: self.vue.form_user_email,
-                user_name: self.vue.form_user_name,
-                created_on: self.vue.form_created_on,
-                updated_on: self.vue.form_updated_on
+                post_content: self.vue.form_post_content
+//                user_email: self.vue.form_user_email,
+//                user_name: self.vue.form_user_name,
+//                created_on: self.vue.form_created_on,
+//                updated_on: self.vue.form_updated_on
             },
             function (data) {
                 $.web2py.enableElement($("#add_post_submit"));
@@ -120,16 +120,29 @@ var app = function() {
     };
 
 
+    function get_edit_url (_idx) {
+        var pp = {
+            start_idx: _idx,
+            end_idx: _idx
+        };
+        return edit_post_url + "?" + $.param(pp);
+    }
+
+
+
+
     self.handle_form_stuff = function () {
         self.vue.is_editing_post = !self.vue.is_editing_post;
         self.vue.show_post = true;
         console.log("handle form");
-        $.post(edit_post_url,
+        $.post(edit_post_url/* + "?" + $.param(_idx=self.vue.the_post_idx),*/,
             {
                 post_id: self.vue.the_id,
+                _idx: self.vue.the_post_idx,
                 post_content: self.vue.form_edit_content
             }
         );
+
     };
 
     self.handle_form_stuff2 = function () {
@@ -137,19 +150,14 @@ var app = function() {
     }
 
 
-    function get_edit_url(start_idx, end_idx) {
+/*    function get_edit_url(start_idx, end_idx) {
         var pp = {
             start_idx: start_idx,
             end_idx: end_idx
         };
         return posts_url + "?" + $.param(pp);
-    }
+    }*/
 
-
-    self.edit_post = function(post_id) {
-        console.log("edit post");
-        console.log(post_id)
-    };
 
     // Complete as needed.
     self.vue = new Vue({
@@ -180,7 +188,7 @@ var app = function() {
         },
         methods: {
             get_more: self.get_more,
-            get_edit_url: self.get_edit_url,
+            //get_edit_url: self.get_edit_url,
             clear_post_form: self.clear_post_form,
             add_post_button: self.add_post_button,
             edit_post_button: self.edit_post_button,
@@ -188,7 +196,6 @@ var app = function() {
             get_posts: self.get_posts,
             add_post: self.add_post,
             del_post: self.delete_post,
-            edit_post: self.edit_post,
             handle_form_stuff2: self.handle_form_stuff2
         }
 
