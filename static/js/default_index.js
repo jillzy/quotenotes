@@ -44,9 +44,11 @@ var app = function() {
     };
 
     self.add_post_button = function () {
+        if (self.vue.logged_in){
         // The button to add a post has been pressed.
-        self.vue.is_adding_post = !self.vue.is_adding_post;
-        self.vue.form_post_content = "";
+            self.vue.is_adding_post = !self.vue.is_adding_post;
+            self.vue.form_post_content = "";
+        }
     };
 
     self.clear_post_form = function () {
@@ -107,11 +109,6 @@ var app = function() {
 
     };
 
-    self.handle_form_stuff2 = function() {
-        //self.vue.is_editing_post = !self.vue.is_editing_post;
-        //self.vue.show_post = true;
-        console.log("cancel!");
-    }
 
     self.handle_form_stuff = function () {
         self.vue.is_editing_post = !self.vue.is_editing_post;

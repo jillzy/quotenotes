@@ -53,9 +53,11 @@ def del_post():
 
 @auth.requires_signature()
 def edit_post():
-    post_id = int(request.vars.post_id)
-    t = db(db.post.id == post_id).select()#.first()
-    t.post_content = request.vars.post_content
-
+    query = ((db.post.user_email == auth.user.email) &
+             (db.post.id == request.vars.post_id))
+    t = db(db.post.id == request.vars.post_id).select()#.first()
+    form = SQLFORM(db.post, request.vars.post_content, deletable=True)
+    #t.id = request.vars.post_id,
+    #t.post_content = request.vars.post_content
 
     return "ok"
