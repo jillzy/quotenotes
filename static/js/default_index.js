@@ -46,6 +46,10 @@ var app = function() {
     self.add_post_button = function () {
         // The button to add a post has been pressed.
         self.vue.is_adding_post = !self.vue.is_adding_post;
+        self.vue.form_post_content = "";
+    };
+
+    self.clear_post_form = function () {
     };
 
 
@@ -62,6 +66,7 @@ var app = function() {
             function (data) {
                 $.web2py.enableElement($("#add_post_submit"));
                 self.vue.posts.unshift(data.post);
+                self.vue.form_post_content = "";
             });
     };
 
@@ -158,6 +163,7 @@ var app = function() {
         },
         methods: {
             get_more: self.get_more,
+            clear_post_form: self.clear_post_form,
             add_post_button: self.add_post_button,
             edit_post_button: self.edit_post_button,
             handle_form_stuff: self.handle_form_stuff,
