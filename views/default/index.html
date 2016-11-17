@@ -34,7 +34,7 @@
         </div>
     </div>
 
-        <div id = "main_content" v-if = "logged_in">
+    <div id = "main_content" v-if = "logged_in">
         <div class="button_bar">
             <button v-if="!is_adding_post" class="btn btn-danger btn-sm" v-on:click="add_post_button()" v-bind:class="{'disabled': !logged_in}">
             {{=icon_add}}Add post
@@ -44,7 +44,7 @@
             </button>
         </div>
 
-        <div v-if="is_adding_post && logged_in" id="add_post_div">
+        <div v-if="is_adding_post" id="add_post_div">
             <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post">
 
                 <div class="form-group" id="no_table_artist__row">
@@ -61,11 +61,11 @@
             </form>
         </div>
 
-        <div class="result_table">
+        <div class="published_posts">
             <div class = "overflow">
-                <table>
-                    <tbody>
-                    <tr v-for="post in posts">
+
+
+                    <div v-for="post in posts">
                         <td></td>
                         <div id = "edit_form" v-if="is_editing_post" id="edit_post_div">
                             <form action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
@@ -86,19 +86,18 @@
                         <div id = "post" v-if = "!is_editing_post">
                             <td class = "content" v-if="post.id != the_id || show_post">${post.post_content}</td>
                         </div>
-                        <div id = "info">
-                            <td class ="info">&nbsp;Posted by: ${post.user_name}&nbsp;</td>
-                            <td class ="info">Posted on: ${post.created_on}&nbsp;</td>
-                            <td class ="info">Updated on: ${post.updated_on}</td>
-                            <td class ="info">&nbsp;&nbsp;<i class="fa fa-trash-o" v-on:click="del_post(post.id)"
-                                                 v-if="logged_in" v-bind:class="{'disabled': !logged_in}"></i>&nbsp;</td>
-                            <td class ="info"><i class="fa fa-pencil" v-if="!is_editing_post && logged_in"
+                        <p id = "info">
+                            <p>&nbsp;Posted by: ${post.user_name}&nbsp;</p>
+                            <p>Posted on: ${post.created_on}&nbsp;</p>
+                            <p>Updated on: ${post.updated_on}<p>
+                            <p>&nbsp;&nbsp;<i class="fa fa-trash-o" v-on:click="del_post(post.id)"
+                                                 v-if="logged_in" v-bind:class="{'disabled': !logged_in}"></i>&nbsp;</p>
+                            <p><i class="fa fa-pencil" v-if="!is_editing_post && logged_in"
                                                  v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email)"
-                                                 v-bind:class="{'disabled': !logged_in}"></i>&nbsp;</td>
+                                                 v-bind:class="{'disabled': !logged_in}"></i>&nbsp;</p>
                         </div>
-                    </tr>
-                    </tbody>
-                </table>
+                    </div>
+
             </div>
             <div v-if="has_more" class="show_more">
                 <button class="btn btn-default" v-on:click="get_more()">Load more</button></div>
