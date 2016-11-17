@@ -1,5 +1,7 @@
 // This is the js for the default/index.html view.
 
+
+
 var app = function() {
 
     var self = {};
@@ -151,6 +153,10 @@ var app = function() {
         self.vue.show_post = true;
     }
 
+    self.hide = function() {
+        console.log("WTF");
+        self.vue.show = false;
+    }
 
     // Complete as needed.
     self.vue = new Vue({
@@ -176,7 +182,8 @@ var app = function() {
             original_content: null,
             is_user: false,
             the_email: "None",
-            can_edit: false
+            can_edit: false,
+            show: true
 
         },
         methods: {
@@ -189,7 +196,9 @@ var app = function() {
             get_posts: self.get_posts,
             add_post: self.add_post,
             del_post: self.delete_post,
-            handle_form_stuff2: self.handle_form_stuff2
+            handle_form_stuff2: self.handle_form_stuff2,
+            hide: self.hide
+
         }
 
     });
