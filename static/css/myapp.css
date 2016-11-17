@@ -38,8 +38,7 @@
 }
 
 #title_screen {
-  background: yellow;
-  margin:auto;
+  margin:50px auto auto auto;
   width: 85%;
 }
 
@@ -47,9 +46,9 @@
   /*box-sizing: content-box*/
   padding-left: 15px;
   padding-right:15px;
+  text-align:center;
   width:33%;
   height:250px;
-  border: 1px solid black;
   display: table-cell;
   font-size:24px;
   line-spacing: 0px;

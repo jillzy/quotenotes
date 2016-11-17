@@ -1,7 +1,8 @@
 {{extend 'layout.html'}}
 
 {{block head}}
-<script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script src="{{=URL('static', 'js/vue.js')}}" xmlns:height="http://www.w3.org/1999/xhtml"
+        xmlns:height="http://www.w3.org/1999/xhtml"></script>
 <script>
     var posts_url = "{{=URL('api', 'get_posts')}}";
     var add_post_url = "{{=URL('api', 'add_post', user_signature=True)}}";
@@ -17,11 +18,23 @@
 
     <div id="vue-div" class="display:none">
     <div id = "title_screen" v-if="!logged_in">
-        <div class = about>submit and organize your favourite quotes and reflections<br></div>
-        <div class = about>quickly access an entry in your collection<br></div>
-        <div class = about>design and track reading and writing goals<br></div>
+        <div class = about>
+            <img src = https://image.freepik.com/free-icon/pencil-striped-symbol-for-interface-edit-buttons_318-50260.jpg height="220px" width ="220px">
+            <br><br>Submit and organize your favourite quotes and reflections<br>
+        </div>
+
+        <div class = about>
+            <img src = https://image.freepik.com/free-icon/magnifier_318-50440.png height="220px" width ="220px">
+            <br><br>Quickly access an entry in your collection<br>
+        </div>
+
+        <div class = about>
+            <img src = http://cliparts.co/cliparts/Bca/KKB/BcaKKBR7i.png height = "300px" width = "300px">
+            <br>Design and track reading and writing goals<br>
+        </div>
     </div>
-    <div id = "main_content" v-if = "logged_in">
+
+        <div id = "main_content" v-if = "logged_in">
         <div class="button_bar">
             <button v-if="!is_adding_post" class="btn btn-danger btn-sm" v-on:click="add_post_button()" v-bind:class="{'disabled': !logged_in}">
             {{=icon_add}}Add post
@@ -90,7 +103,6 @@
             <div v-if="has_more" class="show_more">
                 <button class="btn btn-default" v-on:click="get_more()">Load more</button></div>
         </div>
-
     </div>
 
 
