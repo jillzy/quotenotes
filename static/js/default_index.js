@@ -154,8 +154,24 @@ var app = function() {
     }
 
     self.hide = function() {
-        console.log("WTF");
         self.vue.show = false;
+    }
+
+    self.debug = function() {
+        console.log("debug");
+    }
+
+    self.postTab = function() {
+        console.log("post tab");
+    }
+
+    self.infoTab = function() {
+        console.log("info tab");
+    }
+
+
+    self.tagsTab = function() {
+        console.log("tags tab");
     }
 
     // Complete as needed.
@@ -183,8 +199,8 @@ var app = function() {
             is_user: false,
             the_email: "None",
             can_edit: false,
-            show: true
-
+            show: true,
+            activeColor: 'red'
         },
         methods: {
             get_more: self.get_more,
@@ -197,8 +213,11 @@ var app = function() {
             add_post: self.add_post,
             del_post: self.delete_post,
             handle_form_stuff2: self.handle_form_stuff2,
-            hide: self.hide
-
+            hide: self.hide,
+            debug: self.debug,
+            postTab: self.postTab,
+            infoTab: self.infoTab,
+            tagsTab: self.tagsTab
         }
 
     });
