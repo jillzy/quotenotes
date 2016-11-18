@@ -17,98 +17,106 @@
 
 
     <div id="vue-div" class="display:none">
-    <div id = "title_screen" v-if="!logged_in">
-        <div class = about>
-            <img src = https://image.freepik.com/free-icon/pencil-striped-symbol-for-interface-edit-buttons_318-50260.jpg height="220px" width ="220px">
-            <br><br>Submit and organize your favourite quotes and reflections<br>
-        </div>
-
-        <div class = about>
-            <img src = https://image.freepik.com/free-icon/magnifier_318-50440.png height="220px" width ="220px">
-            <br><br>Quickly access an entry in your collection<br>
-        </div>
-
-        <div class = about>
-            <img src = http://cliparts.co/cliparts/Bca/KKB/BcaKKBR7i.png height = "300px" width = "300px">
-            <br>Design and track reading and writing goals<br>
-        </div>
-    </div>
-
-    <div id = "main_content" v-if = "logged_in">
-        <div class="button_bar">
-            <button v-if="!is_adding_post" class="btn btn-danger btn-sm" v-on:click="add_post_button()" v-bind:class="{'disabled': !logged_in}">
-            {{=icon_add}}Add post
-            </button>
-            <button v-if="is_adding_post && logged_in" class="btn btn-warning btn-sm" v-on:click="add_post_button()">
-            {{=icon_cancel}}Cancel
-            </button>
-        </div>
-
-        <div v-if="is_adding_post" id="add_post_div">
-            <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post">
-
-                <div class="form-group" id="no_table_artist__row">
-                    <div>
-                        <input class="form-control string" id="post_textbox" v-model="form_post_content" placeholder="your message here" type="text" />
-                        <span class="help-block"></span>
-                    </div>
-                </div>
-                <div class="form-group" id="submit_record__row">
-                    <div>
-                        <input class="btn btn-primary" id="add_post_submit" type="submit" value="Submit"/>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div class="published_posts">
-            <div v-for="post in posts">
-                <div id = "edit_form" v-if="is_editing_post" id="edit_post_div">
-                    <form action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
-                        <div class="form-group" id="no_table_artist__row">
-                            <div>
-                                <input class="form-control string" id="edit_textbox" v-model="form_edit_content" type="text" />
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group" id="submit_record__row">
-                            <div>
-                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Submit" v-on:click="handle_form_stuff()"/>
-                                <input class="btn btn-primary" id="edit_post_cancel" type="submit" value="Cancel" v-on:click="handle_form_stuff2()"/>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class = "entryTopBar">
-                    <div class = "tab" v-on:click="postTab()">Post Title Here</div>
-                    <div class = "tab" v-on:click="infoTab()">Info</div>
-                    <div class = "tab" v-on:click="tagsTab()">Tags</div>
-                    <div class = "tab" v-on:click="">Edit</div>
-                    <div class = "tab" v-on:click="">Delete</div>
-                </div>
-                <div class = "entry" v-model = "model" v-bind:style="{background: activeColour}">
-                    <div id = "post" v-if = "!is_editing_post && showPost">
-                        <p class = "content" v-if="post.id != the_id || show_post">${post.post_content}</p>
-                    </div>
-                    <div id = "info" v-if = "showInfo">
-                        <p>Posted by: ${post.user_name}&nbsp;</p>
-                        <p>Posted on: ${post.created_on}&nbsp;</p>
-                        <p>Updated on: ${post.updated_on}<p>
-                        <p>&nbsp;&nbsp;<i class="fa fa-trash-o" v-on:click="del_post(post.id)"
-                                             v-if="logged_in" v-bind:class="{'disabled': !logged_in}"></i>&nbsp;</p>
-                        <p><i class="fa fa-pencil" v-if="!is_editing_post && logged_in"
-                                             v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email)"
-                                             v-bind:class="{'disabled': !logged_in}"></i>&nbsp;</p>
-                    </div>
-                </div>
+        <div id = "title_screen" v-if="!logged_in">
+            <div class = about>
+                <img src = https://image.freepik.com/free-icon/pencil-striped-symbol-for-interface-edit-buttons_318-50260.jpg height="220px" width ="220px">
+                <br><br>Submit and organize your favourite quotes and reflections<br>
             </div>
 
-            <div v-if="has_more" class="show_more">
-                <button class="btn btn-default" v-on:click="get_more()">Load more</button></div>
-        </div>
-    </div>
+            <div class = about>
+                <img src = https://image.freepik.com/free-icon/magnifier_318-50440.png height="220px" width ="220px">
+                <br><br>Quickly access an entry in your collection<br>
+            </div>
 
+            <div class = about>
+                <img src = http://cliparts.co/cliparts/Bca/KKB/BcaKKBR7i.png height = "300px" width = "300px">
+                <br>Design and track reading and writing goals<br>
+            </div>
+        </div>
+
+        <div id = "main_content" v-if = "logged_in">
+            <div class="button_bar">
+                <button v-if="!is_adding_post" class="btn btn-danger btn-sm" v-on:click="add_post_button()" v-bind:class="{'disabled': !logged_in}">
+                {{=icon_add}}Add post
+                </button>
+                <button v-if="is_adding_post && logged_in" class="btn btn-warning btn-sm" v-on:click="add_post_button()">
+                {{=icon_cancel}}Cancel
+                </button>
+            </div>
+
+            <div v-if="is_adding_post" id="add_post_div">
+                <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post">
+
+                    <div class="form-group" id="no_table_artist__row">
+                        <div>
+                            <input class="form-control string" id="post_textbox" v-model="form_post_content" placeholder="your message here" type="text" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group" id="submit_record__row">
+                        <div>
+                            <input class="btn btn-primary" id="add_post_submit" type="submit" value="Submit"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="published_posts">
+                <div v-for="post in posts">
+
+                    <div class = "entryTopBar">
+                        <div class = "tab" v-on:click="postTab()">Post Title Here</div>
+                        <div class = "tab" v-on:click="infoTab()">Info</div>
+                        <div class = "tab" v-on:click="tagsTab()">Tags</div>
+                        <div class = "tab" v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email)">Edit</div>
+                        <div class = "tab" v-on:click="delTab()">Delete</div>
+                    </div>
+                    <div id = "entry" class = "entry"><!--v-bind:style="{background: activeColour}"-->
+
+                        <div id = "edit_form" v-if="is_editing_post" id="edit_post_div">
+                            <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
+                                <div class="form-group" id="no_table_artist__row">
+                                    <div>
+                                        <input class="form-control string" id="edit_textbox" v-model="form_edit_content" type="text" />
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="submit_record__row">
+                                    <div>
+                                        <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Submit" v-on:click="handle_form_stuff()"/>
+                                        <input class="btn btn-primary" id="edit_post_cancel" type="submit" value="Cancel" v-on:click="handle_form_stuff2()"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+
+                        <div id = "post" v-if = "!is_editing_post && showPost">
+                            <p class = "content" v-if="post.id != the_id || show_post">${post.post_content}</p>
+                        </div>
+
+
+                        <div id = "info" v-if = "showInfo">
+                            <p>Posted by: ${post.user_name}&nbsp;</p>
+                            <p>Posted on: ${post.created_on}&nbsp;</p>
+                            <p>Updated on: ${post.updated_on}<p>
+                        </div>
+
+                        <div id = "delete" v-if = "showDel">
+                            <p>Are you sure?</p>
+                            <input class="btn btn-primary" id="delete" type="submit" value="Delete" v-on:click="del_post(post.id)"/>
+                            <input class="btn btn-primary" id="delete" type="submit" value="Cancel" v-on:click="postTab()"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="has_more" class="show_more">
+                    <button class="btn btn-default" v-on:click="get_more()">Load more</button>
+                </div>
+            </div>
+        <div>
+    </div>
 
 </div>
 

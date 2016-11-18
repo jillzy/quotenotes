@@ -100,6 +100,12 @@ var app = function() {
                     self.vue.posts.splice(idx - 1, 1);
                 }
                 enumerate(self.vue.posts);
+
+                self.vue.showPost = true;
+                self.vue.showInfo = false;
+                self.vue.showTags = false;
+                self.vue.is_editing_post = false;
+                self.vue.showDel = false;
             }
         )
     };
@@ -146,6 +152,7 @@ var app = function() {
         );
         self.vue.posts[self.vue.the_post_idx].post_content = self.vue.form_edit_content;
         console.log(self.vue.posts[self.vue.the_post_idx].post_content);
+
     };
 
     self.handle_form_stuff2 = function () {
@@ -166,15 +173,22 @@ var app = function() {
         self.vue.showPost = true;
         self.vue.showInfo = false;
         self.vue.showTags = false;
+        self.vue.is_editing_post = false;
+        self.vue.showEdit = false;
+        self.vue.showDel = false;
 
     }
 
     self.infoTab = function() {
+        //$("#entry").style.color = 'red';
         console.log("info tab");
         activeColour = 'red';
         self.vue.showPost = false;
         self.vue.showInfo = true;
         self.vue.showTags = false;
+        self.vue.is_editing_post = false;
+        self.vue.showEdit = false;
+        self.vue.showDel = false;
     }
 
 
@@ -183,12 +197,35 @@ var app = function() {
         self.vue.showPost = false;
         self.vue.showInfo = false;
         self.vue.showTags = true;
+        self.vue.is_editing_post = false;
+        self.vue.showEdit = false;
+        self.vue.showDel = false;
 
+    }
+
+    self.editTab = function() {
+        self.vue.showPost = false;
+        self.vue.showInfo = false;
+        self.vue.showTags = false;
+        self.vue.is_editing_post = true;
+        self.vue.showEdit = true;
+        self.vue.showDel = false;
+    }
+
+
+    self.delTab = function() {
+        self.vue.showPost = false;
+        self.vue.showInfo = false;
+        self.vue.showTags = false;
+        self.vue.is_editing_post = false;
+        self.vue.showEdit = false;
+        self.vue.showDel = true;
     }
 
     // Complete as needed.
     self.vue = new Vue({
         el: "#vue-div",
+        //el: ["#vue-div", "entry"],
         delimiters: ['${', '}'],
         unsafeDelimiters: ['!{', '}'],
         data: {
@@ -215,7 +252,10 @@ var app = function() {
             activeColour: 'white',
             showPost: true,
             showInfo: false,
-            showTags: false
+            showTags: false,
+            showEdit: false,
+            showDel: false
+
         },
 
         methods: {
@@ -233,7 +273,9 @@ var app = function() {
             debug: self.debug,
             postTab: self.postTab,
             infoTab: self.infoTab,
-            tagsTab: self.tagsTab
+            tagsTab: self.tagsTab,
+            editTab: self.editTab,
+            delTab: self.delTab
         }
 
     });
