@@ -6,8 +6,9 @@ body {
   width: 85%;
   line-height:170%;
   background-color: white;
-  margin: 0 auto 50px auto;
+  margin: 0 auto 0 auto;
   padding: 20px;
+  font-size: 18px;
 
 }
 
@@ -31,7 +32,9 @@ div.tab {
 .tab:hover {
   color:white;
   background-color: #afbfc0;
+  text-transform: uppercase;
 }
+
 .tab {
   cursor: pointer;
   display: inline;
@@ -50,12 +53,6 @@ div.tab {
   -ms-user-select: none; /* IE10+ */
 }
 
-
-
-.overflow {
-  height:450px;
-  overflow:auto;
-}
 
 .show_more {
   margin-top:20px;
@@ -76,7 +73,7 @@ div.tab {
 
 #info {
   position:relative;
-  font-variant: small-caps;
+  line-height: 100%;
   max-width:50%;
 }
 

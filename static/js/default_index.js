@@ -197,9 +197,7 @@ var app = function() {
 
     }
 
-    self.editTab = function(id) {
-        self.vue.the_id = id;
-        console.log(self.vue.the_id);
+    self.editTab = function() {
         console.log("edit");
         self.vue.showPost = false;
         self.vue.showInfo = false;
@@ -223,6 +221,12 @@ var app = function() {
         self.vue.the_id = id;
         console.log(self.vue.the_id);
         self.vue.activated = true;
+
+        /*        self.vue.showPost = true;
+        self.vue.showInfo = false;
+        self.vue.showTags = false;
+        self.vue.showEdit = false;
+        self.vue.showDel = false;*/
     }
 
 
