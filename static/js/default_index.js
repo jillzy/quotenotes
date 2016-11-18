@@ -104,7 +104,6 @@ var app = function() {
                 self.vue.showPost = true;
                 self.vue.showInfo = false;
                 self.vue.showTags = false;
-                self.vue.is_editing_post = false;
                 self.vue.showDel = false;
             }
         )
@@ -113,10 +112,8 @@ var app = function() {
     self.edit_post_button = function (post_id, content, _idx, poster_email) {
         // The button to add a post has been pressed.
         if (self.vue.the_email == poster_email) {
-            self.vue.is_editing_post = true;
             self.vue.show_post = false;
         } else {
-            self.vue.is_editing_post = false;
             self.vue.show_post = true;
         }
         self.vue.the_post_idx = _idx;
@@ -124,6 +121,7 @@ var app = function() {
         self.vue.original_content = content;
         self.vue.form_edit_content = self.vue.original_content;
         self.vue.the_id = post_id;
+        console.log(self.vue.original_content);
 
     };
 
@@ -140,7 +138,6 @@ var app = function() {
 
 
     self.handle_form_stuff = function () {
-        self.vue.is_editing_post = !self.vue.is_editing_post;
         self.vue.show_post = true;
         console.log("handle form");
         $.post(edit_post_url/* + "?" + $.param(_idx=self.vue.the_post_idx),*/,
@@ -152,13 +149,13 @@ var app = function() {
         );
         self.vue.posts[self.vue.the_post_idx].post_content = self.vue.form_edit_content;
         console.log(self.vue.posts[self.vue.the_post_idx].post_content);
-
+        self.vue.showPost = true;
+        self.vue.showInfo = false;
+        self.vue.showTags = false;
+        self.vue.showEdit = false;
+        self.vue.showDel = false;
     };
 
-    self.handle_form_stuff2 = function () {
-        self.vue.is_editing_post = false;
-        self.vue.show_post = true;
-    }
 
     self.hide = function() {
         self.vue.show = false;
@@ -173,7 +170,6 @@ var app = function() {
         self.vue.showPost = true;
         self.vue.showInfo = false;
         self.vue.showTags = false;
-        self.vue.is_editing_post = false;
         self.vue.showEdit = false;
         self.vue.showDel = false;
 
@@ -186,7 +182,6 @@ var app = function() {
         self.vue.showPost = false;
         self.vue.showInfo = true;
         self.vue.showTags = false;
-        self.vue.is_editing_post = false;
         self.vue.showEdit = false;
         self.vue.showDel = false;
     }
@@ -197,27 +192,26 @@ var app = function() {
         self.vue.showPost = false;
         self.vue.showInfo = false;
         self.vue.showTags = true;
-        self.vue.is_editing_post = false;
         self.vue.showEdit = false;
         self.vue.showDel = false;
 
     }
 
     self.editTab = function() {
+        console.log("edit");
         self.vue.showPost = false;
         self.vue.showInfo = false;
         self.vue.showTags = false;
-        self.vue.is_editing_post = true;
         self.vue.showEdit = true;
         self.vue.showDel = false;
     }
 
 
     self.delTab = function() {
+        console.log("delete");
         self.vue.showPost = false;
         self.vue.showInfo = false;
         self.vue.showTags = false;
-        self.vue.is_editing_post = false;
         self.vue.showEdit = false;
         self.vue.showDel = true;
     }
@@ -231,7 +225,6 @@ var app = function() {
         data: {
             has_more: false,
             is_adding_post: false,
-            is_editing_post: false,
             posts: [],
             logged_in: false,
             form_post_content: null,
