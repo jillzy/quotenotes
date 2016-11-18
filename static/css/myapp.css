@@ -40,26 +40,12 @@ div.tab {
   background-color: #56494c;
   font-size: 18px;
   padding: 12px 20px;
+  position:relative
   /*make text not selectable
   http://stackoverflow.com/questions/6900124/how-to-make-certain-text-not-selectable-with-css*/
   -webkit-user-select: none; /* Chrome/Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+ */
-}
-
-.postTab {
-  position: relative;
-  width:150px;
-}
-
-.infoTab {
-  position: relative;
-  width: 80px;
-}
-
-.tagsTab {
-  position: relative;
-  width: 80px;
 }
 
 

@@ -163,15 +163,27 @@ var app = function() {
 
     self.postTab = function() {
         console.log("post tab");
+        self.vue.showPost = true;
+        self.vue.showInfo = false;
+        self.vue.showTags = false;
+
     }
 
     self.infoTab = function() {
         console.log("info tab");
+        activeColour = 'red';
+        self.vue.showPost = false;
+        self.vue.showInfo = true;
+        self.vue.showTags = false;
     }
 
 
     self.tagsTab = function() {
         console.log("tags tab");
+        self.vue.showPost = false;
+        self.vue.showInfo = false;
+        self.vue.showTags = true;
+
     }
 
     // Complete as needed.
@@ -190,18 +202,22 @@ var app = function() {
             form_created_on: null,
             form_updated_on: null,
             form_user_name: null,
-            form_edit_content:null,
+            form_edit_content: null,
             the_id: null,
             the_post: null,
             the_post_idx: null,
-            show_post:true,
+            show_post: true,
             original_content: null,
             is_user: false,
             the_email: "None",
             can_edit: false,
             show: true,
-            activeColor: 'red'
+            activeColour: 'white',
+            showPost: true,
+            showInfo: false,
+            showTags: false
         },
+
         methods: {
             get_more: self.get_more,
             //get_edit_url: self.get_edit_url,
