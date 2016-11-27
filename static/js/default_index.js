@@ -58,6 +58,7 @@ var app = function() {
         }
     };
 
+
     self.clear_post_form = function () {
     };
 
@@ -216,6 +217,9 @@ var app = function() {
         self.vue.showDel = true;
     }
 
+
+
+
     self.activate = function(id) {
         console.log("activate");
         self.vue.the_id = id;
@@ -268,6 +272,7 @@ var app = function() {
 
         methods: {
             get_more: self.get_more,
+            not_adding: self.not_adding,
             //get_edit_url: self.get_edit_url,
             clear_post_form: self.clear_post_form,
             add_post_button: self.add_post_button,

@@ -2,6 +2,39 @@ body {
   background-color:#9fa4a9;
 }
 
+
+#addPost {
+  width:70%;
+  height:400px;
+  background: #56494c;
+  color:red;
+  border-radius:20px;
+  position: fixed;
+  padding:20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid #ccc;
+  z-index:1;
+}
+
+.addButton {
+  cursor: pointer;
+  position: fixed;
+  background-color: #56494c;
+  color: #afbfc0;
+  margin-top: 150px;
+  margin-left: 0.01%;
+  padding: 5px 25px;
+  font-size: 48px; /*dynamic*/
+  border-radius: 8px 0 0 8px;
+
+}
+
+.addButton:hover {
+  background-color: #afbfc0;
+  color: white;
+}
+
 .entry {
   width: 85%;
   line-height:170%;
