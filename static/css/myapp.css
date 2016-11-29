@@ -2,6 +2,14 @@ body {
   background-color:#9fa4a9;
 }
 
+#site_title {
+    margin:auto;
+    align-content: center;
+    text-align: center;
+    font-size:78px;
+    font-family: monospace;
+    color: black;
+}
 
 #addPost {
   width:70%;
@@ -127,4 +135,20 @@ form { width: 100% }
   display: table-cell;
   font-size:24px;
   line-spacing: 0px;
+}
+
+#login {
+  background-color: #727272;
+    font-size: 25px;
+    font-family: monospace;
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+    border-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 120px;
+    margin:auto;
+    align-content: center;
+  
 }
