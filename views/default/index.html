@@ -161,6 +161,26 @@
 
                             <div id = "tag" v-if = "showTags && post.id == the_id">
                                 <p>Book, quote, reflection, other, tags, here</p>
+
+                                <div id = "edit_tags_form" id="editTags" v-if = "isEditingTags">
+                                    <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
+                                        <div class="form-group" id="no_table_artist__row">
+                                            <div>
+                                                <input class="form-control string" id="tagsTextbox" v-model="form_edit_content" type="text" style="width: 1000px;"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" id="submit_record__row">
+                                            <div>
+                                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="handle_form_stuff()"/>
+                                                <input class="btn btn-primary" id="edit_post_cancel" type="submit" value="Cancel" v-on:click="postTab()"/>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <button class="btn btn-default" v-if = "!isEditingTags" v-on:click="toggleEditTags()" style = "margin-top: 10px;">Edit Tags</button>
+                                <button class="btn btn-default" v-if = "isEditingTags" v-on:click="toggleEditTags()" style = "margin-top: 10px;">Stop Editing</button>
+
                             </div>
 
                             <div id = "delete" v-if = "showDel && post.id == the_id">

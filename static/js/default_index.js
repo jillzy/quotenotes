@@ -233,6 +233,9 @@ var app = function() {
         self.vue.isEditingInfo = !self.vue.isEditingInfo;
     }
 
+    self.toggleEditTags = function() {
+        self.vue.isEditingTags = !self.vue.isEditingTags;
+    }
 
 
 
@@ -249,6 +252,8 @@ var app = function() {
             self.vue.showEdit = false;
             self.vue.showDel = false;
             self.vue.isEditingInfo = false;
+            self.vue.isEditingTags = false;
+
         }
         console.log(self.vue.the_id);
         self.vue.flag = true;
@@ -293,7 +298,8 @@ var app = function() {
             activated: false,
             prev_id: null,
             flag: false,
-            isEditingInfo: false
+            isEditingInfo: false,
+            isEditingTags: false
 
         },
 
@@ -318,7 +324,8 @@ var app = function() {
             delTab: self.delTab,
             closeAddPost: self.closeAddPost,
             activate: self.activate,
-            toggleEditInfo: self.toggleEditInfo
+            toggleEditInfo: self.toggleEditInfo,
+            toggleEditTags: self.toggleEditTags
         }
 
     });
