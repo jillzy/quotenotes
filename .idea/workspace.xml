@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="599d2469-54d5-4401-a16d-6d13ed4a9818" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/tables.py" afterPath="$PROJECT_DIR$/models/tables.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/default_index.js" afterPath="$PROJECT_DIR$/static/js/default_index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/default/index.html" afterPath="$PROJECT_DIR$/views/default/index.html" />
     </list>
     <ignored path="hw3.iws" />
@@ -39,9 +36,13 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/default/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="602">
-              <caret line="98" column="78" selection-start-line="98" selection-start-column="78" selection-end-line="98" selection-end-column="78" />
-              <folding />
+            <state relative-caret-position="260">
+              <caret line="136" column="34" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="34" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -49,7 +50,7 @@
       <file leaf-file-name="tables.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/tables.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
+            <state relative-caret-position="211">
               <caret line="27" column="40" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
               <folding />
             </state>
@@ -59,7 +60,7 @@
       <file leaf-file-name="default.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/default.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="800">
+            <state relative-caret-position="25">
               <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
               <folding />
             </state>
@@ -69,7 +70,7 @@
       <file leaf-file-name="myapp.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/myapp.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
+            <state relative-caret-position="25">
               <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
               <folding />
             </state>
@@ -441,14 +442,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/default/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1475">
-          <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="975">
@@ -517,7 +510,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -549,7 +546,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700">
           <caret line="68" column="106" selection-start-line="68" selection-start-column="106" selection-end-line="68" selection-end-column="106" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -601,7 +602,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1400">
           <caret line="56" column="77" selection-start-line="56" selection-start-column="77" selection-end-line="56" selection-end-column="77" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -653,7 +658,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1475">
           <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -691,7 +700,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1475">
           <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -775,14 +788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/myapp.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/layout.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
@@ -793,15 +798,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/default.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="800">
+        <state relative-caret-position="25">
           <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/myapp.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/tables.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
+        <state relative-caret-position="211">
           <caret line="27" column="40" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
           <folding />
         </state>
@@ -815,11 +828,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/block.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/default/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="98" column="78" selection-start-line="98" selection-start-column="78" selection-end-line="98" selection-end-column="78" />
-          <folding />
+        <state relative-caret-position="260">
+          <caret line="136" column="34" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="34" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

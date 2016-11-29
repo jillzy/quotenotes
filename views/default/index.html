@@ -96,13 +96,11 @@
 
 
                             <div id = "info" v-if = "showInfo && post.id == the_id">
-                                <button class="btn btn-default" v-if = "!isEditingInfo" v-on:click="toggleEditInfo()">Edit Info</button>
-                                <button class="btn btn-default" v-if = "isEditingInfo" v-on:click="toggleEditInfo()">Stop Editing</button>
                                 <!--<p><b>Posted by:</b> ${post.user_name}</p>
                                 <p><b>Posted on:</b> ${post.created_on}&nbsp;</p>
                                 <p><b>Updated on:</b> ${post.updated_on}<p>
                                 for the stuff under this: v-if category is quote or book?-->
-                                <p v-if = !isEditingInfo><b>Author: </b>${post.author}</p>
+                                <p><b>Author: </b><span v-if = !isEditingInfo>${post.author}</span></p>
                                 <div id = "authorForm" v-if = "isEditingInfo">
                                     <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
                                         <div class="form-group" id="no_table_artist__row">
@@ -119,7 +117,7 @@
                                     </form>
                                 </div>
 
-                                <p v-if = !isEditingInfo><b>Book: </b></p>
+                                <p><b>Book: </b><span v-if = !isEditingInfo>${post.book}</span></p>
                                 <div id = "bookForm" v-if = "isEditingInfo"><!-- if editingInfo-->
                                     <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
                                         <div class="form-group" id="no_table_artist__row">
@@ -136,7 +134,7 @@
                                     </form>
                                 </div>
 
-                                <p v-if = !isEditingInfo><b>Pages: </b></p>
+                                <p><b>Pages: </b><span v-if = !isEditingInfo>${post.pages}</span></p>
                                 <div id = "pagesForm" v-if = "isEditingInfo"><!-- if editingInfo-->
                                     <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
                                         <div class="form-group" id="no_table_artist__row">
@@ -155,6 +153,10 @@
 
 
                                 <p><b>Posted On: </b>${post.created_on}</p>
+
+
+                                <button class="btn btn-default" v-if = "!isEditingInfo" v-on:click="toggleEditInfo()" style = "margin-top: 10px;">Edit Info</button>
+                                <button class="btn btn-default" v-if = "isEditingInfo" v-on:click="toggleEditInfo()" style = "margin-top: 10px;">Stop Editing</button>
                             </div>
 
                             <div id = "tag" v-if = "showTags && post.id == the_id">
