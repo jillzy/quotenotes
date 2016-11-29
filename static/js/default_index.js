@@ -222,6 +222,11 @@ var app = function() {
     }
 
 
+    self.toggleEditInfo = function() {
+        self.vue.isEditingInfo= !self.vue.isEditingInfo;
+    }
+
+
 
     self.activate = function(id) {
         console.log("activate");
@@ -277,7 +282,8 @@ var app = function() {
             showDel: false,
             activated: false,
             prev_id: null,
-            flag: false
+            flag: false,
+            isEditingInfo: false
 
         },
 
@@ -301,7 +307,8 @@ var app = function() {
             editTab: self.editTab,
             delTab: self.delTab,
             closeAddPost: self.closeAddPost,
-            activate: self.activate
+            activate: self.activate,
+            toggleEditInfo: self.toggleEditInfo
         }
 
     });
