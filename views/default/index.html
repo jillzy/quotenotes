@@ -90,7 +90,7 @@
 
 
 
-                            <div id = "post" v-if = "showPost || post.id != the_id">
+                            <div id = "post" v-if = "(!showInfo && !showTags && !showDel && showPost) || post.id != the_id">
                                 <p class = "content">${post.post_content}</p>
                             </div>
 

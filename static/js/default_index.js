@@ -227,7 +227,7 @@ var app = function() {
         }
         self.vue.the_id = id;
         if (self.vue.the_id != self.vue.prev_id) {
-            self.vue.showPost = true;
+            self.vue.showPost = false;
             self.vue.showInfo = false;
             self.vue.showTags = false;
             self.vue.showEdit = false;
