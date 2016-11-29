@@ -221,10 +221,18 @@ var app = function() {
         self.vue.is_adding_post = false;
     }
 
+    self.startEditInfo = function() {
+        self.vue.isEditingInfo = true;
+    }
+
+    self.stopEditInfo = function() {
+        self.vue.isEditingInfo = false;
+    }
 
     self.toggleEditInfo = function() {
-        self.vue.isEditingInfo= !self.vue.isEditingInfo;
+        self.vue.isEditingInfo = !self.vue.isEditingInfo;
     }
+
 
 
 
@@ -240,11 +248,13 @@ var app = function() {
             self.vue.showTags = false;
             self.vue.showEdit = false;
             self.vue.showDel = false;
+            self.vue.isEditingInfo = false;
         }
         console.log(self.vue.the_id);
         self.vue.flag = true;
         self.vue.activated = true;
         self.vue.showPost = true;
+
     }
 
 
