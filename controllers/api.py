@@ -19,6 +19,7 @@ def get_posts():
                 user_name=r.user_name,
                 created_on=r.created_on,
                 updated_on=r.updated_on,
+                author = r.author,
             )
             posts.append(p)
         else:
@@ -47,7 +48,8 @@ def add_post():
         user_email=auth.user.email,
         user_name = get_user_name_from_email(auth.user.email),
         created_on=datetime.datetime.utcnow(),
-        updated_on=request.vars.updated_on
+        updated_on=request.vars.updated_on,
+        author=request.vars.author
 #        updated_on=update=datetime.datetime.utcnow().strftime("%d/%m/%y %H:%M")
     )
     t = db.post(t_id)

@@ -217,6 +217,9 @@ var app = function() {
         self.vue.showDel = true;
     }
 
+    self.closeAddPost = function() {
+        self.vue.is_adding_post = false;
+    }
 
 
 
@@ -297,6 +300,7 @@ var app = function() {
             tagsTab: self.tagsTab,
             editTab: self.editTab,
             delTab: self.delTab,
+            closeAddPost: self.closeAddPost,
             activate: self.activate
         }
 
