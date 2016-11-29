@@ -222,15 +222,21 @@ var app = function() {
 
     self.activate = function(id) {
         console.log("activate");
+        if (self.vue.the_id) {
+            self.vue.prev_id = self.vue.the_id;
+        }
         self.vue.the_id = id;
+        if (self.vue.the_id != self.vue.prev_id) {
+            self.vue.showPost = true;
+            self.vue.showInfo = false;
+            self.vue.showTags = false;
+            self.vue.showEdit = false;
+            self.vue.showDel = false;
+        }
         console.log(self.vue.the_id);
+        self.vue.flag = true;
         self.vue.activated = true;
-
-        /*        self.vue.showPost = true;
-        self.vue.showInfo = false;
-        self.vue.showTags = false;
-        self.vue.showEdit = false;
-        self.vue.showDel = false;*/
+        self.vue.showPost = true;
     }
 
 
@@ -266,7 +272,9 @@ var app = function() {
             showTags: false,
             showEdit: false,
             showDel: false,
-            activated: false
+            activated: false,
+            prev_id: null,
+            flag: false
 
         },
 
