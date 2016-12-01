@@ -58,6 +58,12 @@ var app = function() {
         }
     };
 
+    self.filter_post_button = function () {
+        if (self.vue.logged_in){
+            self.vue.isFilteringPost = !self.vue.isFilteringPost;
+        }
+    };
+
 
     self.clear_post_form = function () {
     };
@@ -221,6 +227,11 @@ var app = function() {
         self.vue.is_adding_post = false;
     }
 
+
+    self.closeFilterPost = function() {
+        self.vue.isFilteringPost = false;
+    }
+
     self.startEditInfo = function() {
         self.vue.isEditingInfo = true;
     }
@@ -229,8 +240,13 @@ var app = function() {
         self.vue.isEditingInfo = false;
     }
 
-    self.toggleEditInfo = function() {
+    self.toggleEditInfo = function(title, author, book, pages) {
         self.vue.isEditingInfo = !self.vue.isEditingInfo;
+        self.vue.form_edit_title = title;
+        self.vue.form_edit_author = author;
+        self.vue.form_edit_book = book;
+        self.vue.form_edit_pages = pages;
+
     }
 
     self.toggleEditTags = function() {
@@ -299,7 +315,8 @@ var app = function() {
             prev_id: null,
             flag: false,
             isEditingInfo: false,
-            isEditingTags: false
+            isEditingTags: false,
+            isFilteringPost: false
 
         },
 
@@ -309,6 +326,7 @@ var app = function() {
             //get_edit_url: self.get_edit_url,
             clear_post_form: self.clear_post_form,
             add_post_button: self.add_post_button,
+            filter_post_button: self.filter_post_button,
             edit_post_button: self.edit_post_button,
             handle_form_stuff: self.handle_form_stuff,
             get_posts: self.get_posts,
@@ -323,6 +341,7 @@ var app = function() {
             editTab: self.editTab,
             delTab: self.delTab,
             closeAddPost: self.closeAddPost,
+            closeFilterPost: self.closeFilterPost,
             activate: self.activate,
             toggleEditInfo: self.toggleEditInfo,
             toggleEditTags: self.toggleEditTags
