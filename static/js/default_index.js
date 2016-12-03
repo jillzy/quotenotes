@@ -85,13 +85,6 @@ var app = function() {
                 $.web2py.enableElement($("#add_post_submit"));
                 self.vue.posts.unshift(data.post);
                 enumerate(self.vue.posts);
-      /*        self.vue.posts[self.vue.the_post_idx].title = self.vue.form_edit_title;
-                console.log(self.vue.posts[self.vue.the_post_idx].title);
-                if (self.vue.posts[self.vue.the_post_idx].title) {
-                    self.vue.untitled = false;
-                } else { self.vue.untitled = true;}
-
-*/
                 self.vue.edit_post_title = "";
                 self.vue.form_post_content = "";
             });
@@ -167,6 +160,7 @@ var app = function() {
         );
 
         self.vue.posts[self.vue.the_post_idx].post_content = self.vue.form_edit_content;
+        self.vue.posts[self.vue.the_post_idx].title = self.vue.form_edit_title;
 /*        self.vue.posts[self.vue.the_post_idx].title = self.vue.form_edit_title;
         console.log(self.vue.posts[self.vue.the_post_idx].title);
         if (self.vue.posts[self.vue.the_post_idx].title) {
