@@ -43,7 +43,9 @@
 
                     <div class="form-group" id="no_table_artist__row">
                         <div>
-                            <input class="form-control string" id="post_textbox" v-model="form_post_content" placeholder="your message here"
+                            <input class="form-control string" id="title_textbox" v-model="form_edit_title"
+                                   type="text"/>
+                            <input class="form-control string" id="post_textbox" v-model="form_post_content"
                                    type="text" style="position: relative; margin: auto; width: 80%; height: 300px;"/>
                             <span class="help-block"></span>
                         </div>
@@ -61,9 +63,10 @@
 
                     filtering post
                     <div class="form-group" id="submit_record__row">
-                        <div>
-                            <input class="btn btn-primary" id="add_post_submit" type="submit" value="Submit" v-on:click="closeFilterPost()"/>
+                        <div v-for="post in posts">
+                            <input type="checkbox" name="vehicle" value="Car" checked="checked">${post.user_name}<br>
                         </div>
+                        <input class="btn btn-primary" id="add_post_submit" type="submit" value="Submit" v-on:click="closeFilterPost()"/>
                     </div>
                 </form>
             </div>
@@ -78,7 +81,7 @@
                 <div v-for="post in posts">
                     <div id = "entryBlock" v-on:click="activate(post.id)">
                         <div class = "entryTopBar">
-                            <div class = "tab" v-on:click="postTab()"><!--v if untitled>-->Untitled Post<!--v if !untited> ${post.title}--></div>
+                            <div class = "tab" v-on:click="postTab()"><span v-if = "untitled">Untitled Post</span><span v-if = "!untitled"> ${post.title}</span></div>
                             <div class = "tab" v-on:click="infoTab()" v-if = "activated && post.id == the_id">Info</div>
                             <div class = "tab" v-on:click="tagsTab()" v-if = "activated && post.id == the_id">Tags</div>
                             <div class = "tab" v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email), editTab()"

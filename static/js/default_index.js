@@ -73,7 +73,8 @@ var app = function() {
         // The submit button to add a post has been added.
         $.post(add_post_url,
             {
-                post_content: self.vue.form_post_content
+                post_content: self.vue.form_post_content,
+                title: self.vue.form_edit_title,
 //                user_email: self.vue.form_user_email,
 //                user_name: self.vue.form_user_name,
 //                created_on: self.vue.form_created_on,
@@ -316,7 +317,8 @@ var app = function() {
             flag: false,
             isEditingInfo: false,
             isEditingTags: false,
-            isFilteringPost: false
+            isFilteringPost: false,
+            untitled: false
 
         },
 
