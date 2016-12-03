@@ -55,6 +55,7 @@ var app = function() {
         // The button to add a post has been pressed.
             self.vue.is_adding_post = !self.vue.is_adding_post;
             self.vue.form_post_content = "";
+            self.vue.form_post_title = "";
         }
     };
 
@@ -74,7 +75,7 @@ var app = function() {
         $.post(add_post_url,
             {
                 post_content: self.vue.form_post_content,
-                title: self.vue.form_edit_title,
+                title: self.vue.form_post_title,
 //                user_email: self.vue.form_user_email,
 //                user_name: self.vue.form_user_name,
 //                created_on: self.vue.form_created_on,
@@ -84,6 +85,14 @@ var app = function() {
                 $.web2py.enableElement($("#add_post_submit"));
                 self.vue.posts.unshift(data.post);
                 enumerate(self.vue.posts);
+      /*        self.vue.posts[self.vue.the_post_idx].title = self.vue.form_edit_title;
+                console.log(self.vue.posts[self.vue.the_post_idx].title);
+                if (self.vue.posts[self.vue.the_post_idx].title) {
+                    self.vue.untitled = false;
+                } else { self.vue.untitled = true;}
+
+*/
+                self.vue.edit_post_title = "";
                 self.vue.form_post_content = "";
             });
     };
@@ -152,10 +161,19 @@ var app = function() {
             {
                 post_id: self.vue.the_id,
                 _idx: self.vue.the_post_idx,
-                post_content: self.vue.form_edit_content
+                post_content: self.vue.form_edit_content,
+                title: self.vue.form_edit_title
             }
         );
+
         self.vue.posts[self.vue.the_post_idx].post_content = self.vue.form_edit_content;
+/*        self.vue.posts[self.vue.the_post_idx].title = self.vue.form_edit_title;
+        console.log(self.vue.posts[self.vue.the_post_idx].title);
+        if (self.vue.posts[self.vue.the_post_idx].title) {
+            self.vue.untitled = false;
+        } else { self.vue.untitled = true;}
+
+*/
         console.log(self.vue.posts[self.vue.the_post_idx].post_content);
         self.vue.showPost = true;
         self.vue.showInfo = false;
@@ -292,6 +310,7 @@ var app = function() {
             posts: [],
             logged_in: false,
             form_post_content: null,
+            form_post_title: null,
             form_user_email: null,
             form_created_on: null,
             form_updated_on: null,
@@ -324,7 +343,6 @@ var app = function() {
 
         methods: {
             get_more: self.get_more,
-            not_adding: self.not_adding,
             //get_edit_url: self.get_edit_url,
             clear_post_form: self.clear_post_form,
             add_post_button: self.add_post_button,
