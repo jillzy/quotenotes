@@ -81,7 +81,7 @@
                 <div v-for="post in posts">
                     <div id = "entryBlock" v-on:click="activate(post.id)">
                         <div class = "entryTopBar">
-                            <div class = "tab" v-on:click="postTab()"><span v-if = "untitled">Untitled Post</span><span v-if = "!untitled"> ${post.title}</span></div>
+                            <div class = "tab" v-on:click="postTab()"><span v-if = "!post.title">Untitled Post</span><span v-if = "post.title"> ${post.title}</span></div>
                             <div class = "tab" v-on:click="infoTab()" v-if = "activated && post.id == the_id">Info</div>
                             <div class = "tab" v-on:click="tagsTab()" v-if = "activated && post.id == the_id">Tags</div>
                             <div class = "tab" v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email), editTab()"
@@ -119,7 +119,9 @@
                                 <p><b>Updated on:</b> ${post.updated_on}<p>
                                 for the stuff under this: v-if category is quote or book?-->
 
-                                <p><b>Post Title: </b><span v-if = !isEditingInfo><!--v if untitled>-->N/A<!--v if !untited> ${post.title}--></p>
+                                <p><b>Post Title: </b><span v-if = !isEditingInfo>
+                                    <span v-if = "!post.title">Untitled Post</span><span v-if = "post.title"> ${post.title}</span>
+                                </p>
                                 <div id = "authorForm" v-if = "isEditingInfo">
                                     <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
                                         <div class="form-group" id="no_table_artist__row">
