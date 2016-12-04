@@ -71,8 +71,8 @@ def del_post():
 def edit_post():
     post_id = int(request.vars.post_id)
     t_id = db.post.update_or_insert(db.post.id == post_id,
-                                 post_content = request.vars.post_content, author = request.vars.author,
-                                 book= request.vars.book, pgs = request.vars.pgs)
+         post_content = request.vars.post_content, author = request.vars.author,
+         book= request.vars.book, pgs = request.vars.pgs)
     #return "ok"
     t = db.post(t_id)
     return response.json(dict(post=t))

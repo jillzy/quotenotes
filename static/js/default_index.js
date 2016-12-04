@@ -279,6 +279,7 @@ var app = function() {
         self.vue.posts[self.vue.the_post_idx].author = self.vue.form_edit_author;
         self.vue.posts[self.vue.the_post_idx].book = self.vue.form_edit_book;
         self.vue.posts[self.vue.the_post_idx].pgs = self.vue.form_edit_pgs;
+
     }
 
     self.stopEditInfo = function() {
