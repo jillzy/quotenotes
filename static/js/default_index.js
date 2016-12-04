@@ -270,7 +270,7 @@ var app = function() {
             {
                 post_id: self.vue.the_id,
                 _idx: self.vue.the_post_idx,
-                title: self.vue.original_title,
+                title: self.vue.form_edit_title,
                 author: self.vue.form_edit_author,
                 book: self.vue.form_edit_book,
                 pgs: self.vue.form_edit_pgs,
@@ -278,6 +278,7 @@ var app = function() {
             }
         );
         console.log(self.vue.the_post_idx);
+        self.vue.posts[self.vue.the_post_idx].title = self.vue.form_edit_title;
         self.vue.posts[self.vue.the_post_idx].author = self.vue.form_edit_author;
         self.vue.posts[self.vue.the_post_idx].book = self.vue.form_edit_book;
         self.vue.posts[self.vue.the_post_idx].pgs = self.vue.form_edit_pgs;
