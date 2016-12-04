@@ -166,6 +166,7 @@ var app = function() {
                 title: self.vue.form_edit_title, //should be the original
                 book: self.vue.original_book,
                 title: self.vue.original_title,
+                author: self.vue.original_author,
                 pgs: self.vue.original_pgs,
             }
         );
@@ -260,19 +261,20 @@ var app = function() {
         self.vue.isEditingInfo = true;
     }
 
-    self.edit = function(idx, id) {
+    self.edit = function(idx, id, content) {
         console.log("edit()");
         self.vue.the_post_idx = idx;
         self.vue.the_id = id;
+        self.vue.original_content = content;
         $.post(edit_post_url/* + "?" + $.param(_idx=self.vue.the_post_idx),*/,
             {
                 post_id: self.vue.the_id,
                 _idx: self.vue.the_post_idx,
-                post_content: self.vue.original_content,
                 title: self.vue.original_title,
                 author: self.vue.form_edit_author,
                 book: self.vue.form_edit_book,
-                pgs: self.vue.form_edit_pgs
+                pgs: self.vue.form_edit_pgs,
+                post_content: self.vue.original_content
             }
         );
         console.log(self.vue.the_post_idx);
