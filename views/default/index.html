@@ -18,20 +18,28 @@
 
     <div id="vue-div" class="display:none">
         <div id = "title_screen" v-if="!logged_in">
+            <div id=site_title style="">
+                QuoteNotes
+            </div>
             <div class = about>
-                <img src = https://image.freepik.com/free-icon/pencil-striped-symbol-for-interface-edit-buttons_318-50260.jpg height="220px" width ="220px">
+                <img src = https://clipartion.com/wp-content/uploads/2015/10/clip-art-of-a-pencil.png height="220px" width ="170px">
                 <br><br>Submit and organize your favourite quotes and reflections<br>
             </div>
 
             <div class = about>
-                <img src = https://image.freepik.com/free-icon/magnifier_318-50440.png height="220px" width ="220px">
+                <img src = https://clipartion.com/wp-content/uploads/2015/11/magnifying-glass-on-pinterest-vintage-binoculars-detective.jpg height="220px" width ="170px">
                 <br><br>Quickly access an entry in your collection<br>
             </div>
 
             <div class = about>
-                <img src = http://cliparts.co/cliparts/Bca/KKB/BcaKKBR7i.png height = "300px" width = "300px">
+                <img src = http://cliparts.co/cliparts/Bca/KKB/BcaKKBR7i.png height = "250px" width = "250px">
                 <br>Design and track reading and writing goals<br>
             </div>
+            
+            <div id = login>
+                <a href="{{=URL('default', 'user', args=['login'])}}">Log in</a>
+            </div>
+
         </div>
 
 
