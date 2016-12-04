@@ -84,7 +84,8 @@
                             <div class = "tab" v-on:click="postTab()"><span v-if = "!post.title">Untitled Post</span><span v-if = "post.title"> ${post.title}</span></div>
                             <div class = "tab" v-on:click="infoTab()" v-if = "activated && post.id == the_id">Info</div>
                             <div class = "tab" v-on:click="tagsTab()" v-if = "activated && post.id == the_id">Tags</div>
-                            <div class = "tab" v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email, post.title), editTab()"
+                            <div class = "tab" v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email,
+                                post.title, post.book, post.author, post.pgs), editTab()"
                                 v-if = "activated && post.id == the_id">Edit</div>
                             <div class = "tab" v-on:click="delTab()" v-if = "activated && post.id == the_id">Delete</div>
                         </div>

@@ -122,7 +122,7 @@ var app = function() {
         )
     };
 
-    self.edit_post_button = function (post_id, content, _idx, poster_email, title) {
+    self.edit_post_button = function (post_id, content, _idx, poster_email, title, book, author, pgs) {
         // The button to add a post has been pressed.
         if (self.vue.the_email == poster_email) {
             self.vue.show_post = false;
@@ -133,6 +133,9 @@ var app = function() {
         self.vue.the_post = self.vue.posts[self.vue.the_idx];
         self.vue.original_content = content;
         self.vue.original_title = title;
+        self.vue.original_book = book;
+        self.vue.original_author = author;
+        self.vue.original_pgs = pgs;
         self.vue.form_edit_title = self.vue.original_title;
         self.vue.form_edit_content = self.vue.original_content;
         self.vue.the_id = post_id;
@@ -160,7 +163,10 @@ var app = function() {
                 post_id: self.vue.the_id,
                 _idx: self.vue.the_post_idx,
                 post_content: self.vue.form_edit_content,
-                title: self.vue.form_edit_title //should be the original
+                title: self.vue.form_edit_title, //should be the original
+                book: self.vue.original_book,
+                title: self.vue.original_title,
+                pgs: self.vue.original_pgs,
             }
         );
 
@@ -262,6 +268,8 @@ var app = function() {
             {
                 post_id: self.vue.the_id,
                 _idx: self.vue.the_post_idx,
+                post_content: self.vue.original_content,
+                title: self.vue.original_title,
                 author: self.vue.form_edit_author,
                 book: self.vue.form_edit_book,
                 pgs: self.vue.form_edit_pgs
@@ -341,6 +349,9 @@ var app = function() {
             show_post: true,
             original_content: null,
             original_title: null,
+            original_author: "",
+            original_book: "",
+            original_pgs: "",
             is_user: false,
             the_email: "None",
             can_edit: false,
