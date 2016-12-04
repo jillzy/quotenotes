@@ -258,11 +258,15 @@ var app = function() {
             {
                 post_id: self.vue.the_id,
                 _idx: self.vue.the_post_idx,
-                author: self.vue.form_edit_author
+                author: self.vue.form_edit_author,
+                book: self.vue.form_edit_book,
+                pages: self.vue.form_edit_pages
             }
         );
         console.log(self.vue.the_post_idx);
         self.vue.posts[self.vue.the_post_idx].author = self.vue.form_edit_author;
+        self.vue.posts[self.vue.the_post_idx].book = self.vue.form_edit_book;
+        self.vue.posts[self.vue.the_post_idx].pages = self.vue.form_edit_pages;
     }
 
     self.stopEditInfo = function() {
