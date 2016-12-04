@@ -32,7 +32,8 @@ db.define_table('post',
                 Field('title', 'text'),
                 Field('author', 'text'),
                 Field('book', 'text'),
-                Field('tags', 'text'),
+                Field('pgs', 'text'),
+                Field('tags', 'text')
                 )
 
 # I don't want to display the user id or email by default in all forms.

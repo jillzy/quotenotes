@@ -21,7 +21,8 @@ def get_posts():
                 updated_on=r.updated_on,
                 author = r.author,
                 title = r.title,
-                book = r.book
+                book = r.book,
+                pgs = r.pgs
             )
             posts.append(p)
         else:
@@ -53,7 +54,8 @@ def add_post():
         updated_on=request.vars.updated_on,
         author=request.vars.author,
         title = request.vars.title,
-        book = request.vars.book
+        book = request.vars.book,
+        pgs = request.vars.pgs
 #        updated_on=update=datetime.datetime.utcnow().strftime("%d/%m/%y %H:%M")
     )
     t = db.post(t_id)
@@ -69,7 +71,8 @@ def del_post():
 def edit_post():
     post_id = int(request.vars.post_id)
     t_id = db.post.update_or_insert(db.post.id == post_id,
-                                 post_content=request.vars.post_content, author = request.vars.author)
+                                 post_content=request.vars.post_content, author = request.vars.author,
+                                    pgs = request.vars.pgs)
     #return "ok"
     t = db.post(t_id)
     return response.json(dict(post=t))

@@ -170,17 +170,17 @@
                                     </form>
                                 </div>
 
-                                <p><b>Pages: </b><span v-if = !isEditingInfo>${post.pages}</span></p>
-                                <div id = "pagesForm" v-if = "isEditingInfo">
+                                <p><b>Pages: </b><span v-if = !isEditingInfo>${post.pgs}</span></p>
+                                <div id = "pgsForm" v-if = "isEditingInfo">
                                     <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
                                         <div class="form-group" id="no_table_artist__row">
                                             <div>
-                                                <input class="form-control string" id="editAuthor" v-model="form_edit_pages" type="text"/>
+                                                <input class="form-control string" id="editAuthor" v-model="form_edit_pgs" type="text"/>
                                             </div>
                                         </div>
                                         <div class="form-group" id="submit_record__row">
                                             <div>
-                                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="handle_form_stuff()"/>
+                                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="edit(post._idx, post.id)"/>
                                             </div>
                                         </div>
                                     </form>
@@ -190,8 +190,8 @@
                                 <p><b>Posted On: </b>${post.created_on}</p>
 
 
-                                <button class="btn btn-default" v-if = "!isEditingInfo" v-on:click="toggleEditInfo(post.title, post.author, post.book, post.pages)" style = "margin-top: 10px;">Edit Info</button>
-                                <button class="btn btn-default" v-if = "isEditingInfo" v-on:click="toggleEditInfo(post.title, post.author, post.book, post.pages)" style = "margin-top: 10px;">Stop Editing</button>
+                                <button class="btn btn-default" v-if = "!isEditingInfo" v-on:click="toggleEditInfo(post.title, post.author, post.book, post.pgs)" style = "margin-top: 10px;">Edit Info</button>
+                                <button class="btn btn-default" v-if = "isEditingInfo" v-on:click="toggleEditInfo(post.title, post.author, post.book, post.pgs)" style = "margin-top: 10px;">Stop Editing</button>
                             </div>
 
                             <div id = "tag" v-if = "showTags && post.id == the_id">
