@@ -76,7 +76,8 @@ var app = function() {
             {
                 post_content: self.vue.form_post_content,
                 title: self.vue.form_post_title,
-                author: "Unknown"
+                author: "Unknown",
+                book: "Unknown"
 //                user_email: self.vue.form_user_email,
 //                user_name: self.vue.form_user_name,
 //                created_on: self.vue.form_created_on,
@@ -258,11 +259,13 @@ var app = function() {
             {
                 post_id: self.vue.the_id,
                 _idx: self.vue.the_post_idx,
-                author: self.vue.form_edit_author
+                author: self.vue.form_edit_author,
+                book : self.vue.form_edit_book
             }
         );
         console.log(self.vue.the_post_idx);
         self.vue.posts[self.vue.the_post_idx].author = self.vue.form_edit_author;
+        self.vue.posts[self.vue.the_post_idx].book = self.vue.form_edit_book;
     }
 
     self.stopEditInfo = function() {

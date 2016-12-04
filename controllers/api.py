@@ -20,7 +20,8 @@ def get_posts():
                 created_on=r.created_on,
                 updated_on=r.updated_on,
                 author = r.author,
-                title = r.title
+                title = r.title,
+                book = r.book
             )
             posts.append(p)
         else:
@@ -51,7 +52,8 @@ def add_post():
         created_on=datetime.datetime.utcnow(),
         updated_on=request.vars.updated_on,
         author=request.vars.author,
-        title = request.vars.title
+        title = request.vars.title,
+        book = request.vars.book
 #        updated_on=update=datetime.datetime.utcnow().strftime("%d/%m/%y %H:%M")
     )
     t = db.post(t_id)
