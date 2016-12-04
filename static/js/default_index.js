@@ -250,6 +250,19 @@ var app = function() {
         self.vue.isEditingInfo = true;
     }
 
+    self.edit = function() {
+        console.log("edit()");
+        $.post(edit_post_url/* + "?" + $.param(_idx=self.vue.the_post_idx),*/,
+            {
+                post_id: self.vue.the_id,
+                _idx: self.vue.the_post_idx,
+                author: self.vue.form_edit_author
+            }
+        );
+
+        self.vue.posts[self.vue.the_post_idx].author = self.vue.form_author_content;
+    }
+
     self.stopEditInfo = function() {
         self.vue.isEditingInfo = false;
     }
@@ -359,7 +372,8 @@ var app = function() {
             closeFilterPost: self.closeFilterPost,
             activate: self.activate,
             toggleEditInfo: self.toggleEditInfo,
-            toggleEditTags: self.toggleEditTags
+            toggleEditTags: self.toggleEditTags,
+            edit: self.edit
         }
 
     });
