@@ -29,6 +29,11 @@ db.define_table('post',
                 Field('user_name', 'text'),
                 Field('created_on', 'datetime', default=datetime.datetime.utcnow()),
                 Field('updated_on', 'datetime', update=datetime.datetime.utcnow()),
+                Field('title', 'text'),
+                Field('author', 'text'),
+                Field('book', 'text'),
+                Field('pgs', 'text'),
+                Field('tags', 'text')
                 )
 
 # I don't want to display the user id or email by default in all forms.

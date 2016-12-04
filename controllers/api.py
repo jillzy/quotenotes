@@ -19,6 +19,10 @@ def get_posts():
                 user_name=r.user_name,
                 created_on=r.created_on,
                 updated_on=r.updated_on,
+                author = r.author,
+                title = r.title,
+                book = r.book,
+                pgs = r.pgs
             )
             posts.append(p)
         else:
@@ -47,7 +51,11 @@ def add_post():
         user_email=auth.user.email,
         user_name = get_user_name_from_email(auth.user.email),
         created_on=datetime.datetime.utcnow(),
-        updated_on=request.vars.updated_on
+        updated_on=request.vars.updated_on,
+        author=request.vars.author,
+        title = request.vars.title,
+        book = request.vars.book,
+        pgs = request.vars.pgs
 #        updated_on=update=datetime.datetime.utcnow().strftime("%d/%m/%y %H:%M")
     )
     t = db.post(t_id)
@@ -62,8 +70,9 @@ def del_post():
 
 def edit_post():
     post_id = int(request.vars.post_id)
-    t_id = db.post.update_or_insert(db.post.id == post_id,
-                                 post_content=request.vars.post_content)
+    t_id = db.post.update_or_insert(db.post.id == post_id, title = request.vars.title,
+         post_content = request.vars.post_content, author = request.vars.author,
+         book= request.vars.book, pgs = request.vars.pgs)
     #return "ok"
     t = db.post(t_id)
     return response.json(dict(post=t))
