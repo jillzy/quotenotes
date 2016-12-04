@@ -250,8 +250,10 @@ var app = function() {
         self.vue.isEditingInfo = true;
     }
 
-    self.edit = function() {
+    self.edit = function(idx, id) {
         console.log("edit()");
+        self.vue.the_post_idx = idx;
+        self.vue.the_id = id;
         $.post(edit_post_url/* + "?" + $.param(_idx=self.vue.the_post_idx),*/,
             {
                 post_id: self.vue.the_id,
@@ -259,8 +261,8 @@ var app = function() {
                 author: self.vue.form_edit_author
             }
         );
-
-        self.vue.posts[self.vue.the_post_idx].author = self.vue.form_author_content;
+        console.log(self.vue.the_post_idx);
+        self.vue.posts[self.vue.the_post_idx].author = self.vue.form_edit_author;
     }
 
     self.stopEditInfo = function() {
@@ -273,6 +275,7 @@ var app = function() {
         self.vue.form_edit_author = author;
         self.vue.form_edit_book = book;
         self.vue.form_edit_pages = pages;
+
 
     }
 
