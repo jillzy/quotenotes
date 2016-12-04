@@ -122,7 +122,7 @@ var app = function() {
         )
     };
 
-    self.edit_post_button = function (post_id, content, _idx, poster_email) {
+    self.edit_post_button = function (post_id, content, _idx, poster_email, title) {
         // The button to add a post has been pressed.
         if (self.vue.the_email == poster_email) {
             self.vue.show_post = false;
@@ -132,6 +132,8 @@ var app = function() {
         self.vue.the_post_idx = _idx;
         self.vue.the_post = self.vue.posts[self.vue.the_idx];
         self.vue.original_content = content;
+        self.vue.original_title = title;
+        self.vue.form_edit_title = self.vue.original_title;
         self.vue.form_edit_content = self.vue.original_content;
         self.vue.the_id = post_id;
         console.log(self.vue.original_content);
@@ -158,7 +160,7 @@ var app = function() {
                 post_id: self.vue.the_id,
                 _idx: self.vue.the_post_idx,
                 post_content: self.vue.form_edit_content,
-                title: self.vue.form_edit_title
+                title: self.vue.form_edit_title //should be the original
             }
         );
 
@@ -338,6 +340,7 @@ var app = function() {
             the_post_idx: null,
             show_post: true,
             original_content: null,
+            original_title: null,
             is_user: false,
             the_email: "None",
             can_edit: false,
