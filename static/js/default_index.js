@@ -76,6 +76,7 @@ var app = function() {
             {
                 post_content: self.vue.form_post_content,
                 title: self.vue.form_post_title,
+                author: "Unknown"
 //                user_email: self.vue.form_user_email,
 //                user_name: self.vue.form_user_name,
 //                created_on: self.vue.form_created_on,
