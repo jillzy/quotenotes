@@ -137,64 +137,29 @@
                                 <p><b>Posted on:</b> ${post.created_on}&nbsp;</p>
                                 <p><b>Updated on:</b> ${post.updated_on}<p>
                                 for the stuff under this: v-if category is quote or book?-->
+                                <div v-if = "!isEditingInfo">
+                                    <p><b>Post Title:</b> <span v-if = "!post.title">Untitled Post</span><span v-if = "post.title"> ${post.title}</span></p>
 
-                                <p><b>Post Title: </b><span v-if = !isEditingInfo>
-                                    <span v-if = "!post.title">Untitled Post</span><span v-if = "post.title"> ${post.title}</span>
-                                </p>
-                                <div id = "authorForm" v-if = "isEditingInfo">
-                                    <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
-                                        <div class="form-group" id="no_table_artist__row">
-                                            <div>
-                                                <input class="form-control string" id="editTitle" v-model="form_edit_title" type="text"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group" id="submit_record__row">
-                                            <div>
-                                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="edit(post._idx, post.id, post.post_content)"/>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <p><b>Book: </b>${post.book}</p>
+
+                                    <p><b>Author: </b>${post.author}</p>
+
+                                    <p><b>Pages: </b>${post.pgs}</p>
+
                                 </div>
-
-
-                                <p><b>Book: </b><span v-if = !isEditingInfo>${post.book}</span></p>
-                                <div id = "bookForm" v-if = "isEditingInfo"><!-- if editingInfo-->
-                                    <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
-                                        <div class="form-group" id="no_table_artist__row">
-                                            <div>
-                                                <input class="form-control string" id="editBook" v-model="form_edit_book" type="text"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group" id="submit_record__row">
-                                            <div>
-                                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="edit(post._idx, post.id, post.post_content)"/>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
-
-                                <p><b>Author: </b><span v-if = !isEditingInfo>${post.author}</span></p>
-                                <div id = "authorForm" v-if = "isEditingInfo">
-                                    <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
-                                        <div class="form-group" id="no_table_artist__row">
-                                            <div>
-                                                <input class="form-control string" id="editAuthor" v-model="form_edit_author" type="text"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group" id="submit_record__row">
-                                            <div>
-                                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="edit(post._idx, post.id, post.post_content)"/>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <p><b>Pages: </b><span v-if = !isEditingInfo>${post.pgs}</span></p>
                                 <div id = "pgsForm" v-if = "isEditingInfo">
                                     <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
                                         <div class="form-group" id="no_table_artist__row">
                                             <div>
+                                                <p><b>Post Title: </b><span v-if = !isEditingInfo>
+                                                    <span v-if = "!post.title">Untitled Post</span><span v-if = "post.title"> ${post.title}</span>
+                                                </p>
+                                                <input class="form-control string" id="editTitle" v-model="form_edit_title" type="text"/>
+                                                <p><b>Book: </b><span v-if = !isEditingInfo>${post.book}</span></p>
+                                                <input class="form-control string" id="editBook" v-model="form_edit_book" type="text"/>
+                                                <p><b>Author: </b><span v-if = !isEditingInfo>${post.author}</span></p>
+                                                <input class="form-control string" id="editAuthor" v-model="form_edit_author" type="text"/>
+                                                <p><b>Pages: </b><span v-if = !isEditingInfo>${post.pgs}</span></p>
                                                 <input class="form-control string" id="editAuthor" v-model="form_edit_pgs" type="text"/>
                                             </div>
                                         </div>
