@@ -15,8 +15,6 @@
 
 
 <div class="everything">
-
-
     <div id="vue-div" class="display:none">
         <div id = "title_screen" v-if="!logged_in">
             <div id=site_title style="">
@@ -42,7 +40,6 @@
                 <a href="{{=URL('default', 'user', args=['login'])}}">Log in</a>
             </div>
         </div>
-
 
         <div id = "main_content" v-if = "logged_in">
 
@@ -81,8 +78,6 @@
                 </form>
             </div>
 
-
-
             <div id = "page_boxed">
                 <div id="button_side">
                     <div class = "addButton" v-on:click="add_post_button()">+</div>
@@ -108,7 +103,7 @@
                                     <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
                                         <div class="form-group" id="no_table_artist__row">
                                             <div>
-                                                <input class="form-control string" id="edit_textbox" v-model="form_edit_content" type="text" style="width: 1000px;"/>
+                                                <input class="form-control string" id="edit_textbox" v-model="form_edit_content" type="text" style="width: 90%;"/>
                                             </div>
                                         </div>
                                         <div class="form-group" id="submit_record__row">
@@ -213,6 +208,8 @@
         <div>
     </div>
 
+</div>
+</div>
 </div>
 
 

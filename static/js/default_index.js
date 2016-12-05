@@ -418,7 +418,6 @@ var app = function() {
             get_posts: self.get_posts,
             add_post: self.add_post,
             del_post: self.delete_post,
-            handle_form_stuff2: self.handle_form_stuff2,
             hide: self.hide,
             debug: self.debug,
             postTab: self.postTab,
