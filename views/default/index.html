@@ -73,7 +73,7 @@
                     filtering post
                     <div class="form-group" id="submit_record__row">
                         <div v-for="post in posts">
-                            <input type="checkbox" name="vehicle" value="Car" checked="checked">${post.user_name}<br>
+                            <span v-if = "post.tags"><input type="checkbox" name="vehicle" value="Car" checked="checked">${post.tags}</span><br>
                         </div>
                         <input class="btn btn-primary" id="add_post_submit" type="submit" value="Submit" v-on:click="closeFilterPost()"/>
                     </div>
