@@ -13,19 +13,22 @@ body {
 
 #page_boxed {
     display:block; margin:0; padding:0; 
+    width:100%;
     
 }
 
 #button_side {
-    float:left; display:block; margin:0; padding:0; width:8%; height:1200px; 
+    float:left;
+     display:block; margin:0; padding:0; width:8%; height:1200px; 
     cursor: pointer;
-    background: #ccc;
+    /*background: #ccc;*/
     overflow: auto;
     margin-top: 150px;
 }
 
 .published_posts {
-    
+    float:left;
+    width: 90%;
 }
 
 .popup {
@@ -58,7 +61,7 @@ body {
 }
 
 .filterButton {
-  position: fixed;
+    position: fixed;
   background-color: #56494c;
   color: #afbfc0;
   margin-top: 100px;
@@ -129,6 +132,7 @@ div.tab {
 
 .show_more {
   margin-top:20px;
+    margin-left: 8%;
 }
 
 .form-horizontal {
