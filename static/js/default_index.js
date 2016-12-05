@@ -72,7 +72,10 @@ var app = function() {
         self.vue.set.forEach(function(value) {
             console.log(value);
         });
-/*
+
+        self.vue.list = Array.from(self.vue.set);
+        console.log(self.vue.list);
+        /*
         console.log(self.vue.set);
 
         for (var key in self.vue.set) { console.log(key); }
