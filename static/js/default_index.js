@@ -93,6 +93,7 @@ var app = function() {
 
     self.filter = function() {
         console.log("filter");
+
     }
 
 

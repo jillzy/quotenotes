@@ -67,19 +67,17 @@
                 </form>
             </div>
 
-            <div v-if="isFilteringPost" id="filterPost" class = "popup">
-                <form action="#" class="form-horizontal" enctype="multipart/form-data" method="post">
-                    <div class="form-group" id="submit_record__row">
-                        <div v-for="author in list">
-                            <span v-if = "author && author!='Unknown'"><input type="checkbox">${author}</span><br>
-                        </div>
-
-                        <div v-for="book in list2">
-                            <span v-if = "book && book!='Unknown'"><input type="checkbox">${book}</span><br>
-                        </div>
-                        <input class="btn btn-primary" type="submit" value="Submit" v-on:click="filter(), closeFilterPost()"/>
-                    </div>
-                </form>
+            <div v-if="isFilteringPost"class = "popup">
+                <select name = "filterA" style="color:black;position:relative;display:block;">
+                    <option disabled selected value> -- select an Author -- </option>
+                    <option v-for="author in list" v-if = "author && author!='Unknown'">${author}</option><br>
+                    <input class="btn btn-primary" type="submit" value="Go" v-on:click="filter(), closeFilterPost()">
+                </select>
+                <select name = "filterB" style="color:black; margin-top: 20px; position: relative;display:block;">
+                    <option disabled selected value> -- select a Book -- </option>
+                    <option v-for="book in list2" v-if = "book && book!='Unknown'">${book}</option><br>
+                    <input class="btn btn-primary" type="submit" value="Go" v-on:click="filter(), closeFilterPost()">
+                </select>
             </div>
 
 
