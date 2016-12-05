@@ -22,7 +22,8 @@ def get_posts():
                 author = r.author,
                 title = r.title,
                 book = r.book,
-                pgs = r.pgs
+                pgs = r.pgs,
+                tags = r.tags
             )
             posts.append(p)
         else:
@@ -55,7 +56,8 @@ def add_post():
         author=request.vars.author,
         title = request.vars.title,
         book = request.vars.book,
-        pgs = request.vars.pgs
+        pgs = request.vars.pgs,
+        tags = request.vars.tags
 #        updated_on=update=datetime.datetime.utcnow().strftime("%d/%m/%y %H:%M")
     )
     t = db.post(t_id)
@@ -73,6 +75,14 @@ def edit_post():
     t_id = db.post.update_or_insert(db.post.id == post_id, title = request.vars.title,
          post_content = request.vars.post_content, author = request.vars.author,
          book= request.vars.book, pgs = request.vars.pgs)
+    #return "ok"
+    t = db.post(t_id)
+    return response.json(dict(post=t))
+
+
+def edit_tags():
+    post_id = int(request.vars.post_id)
+    t_id = db.post.update_or_insert(db.post.id == post_id, tags = request.vars.tags)
     #return "ok"
     t = db.post(t_id)
     return response.json(dict(post=t))
