@@ -88,7 +88,7 @@
             <div class = "filterButton" v-on:click="filter_post_button()">o</div>
             <div class="published_posts">
                 <div v-for="post in posts">
-                    <div id = "entryBlock" v-on:click="activate(post.id)">
+                    <div id = "entryBlock" v-if = "!(post.id in hideID)" v-on:click="activate(post.id)">
                         <div class = "entryTopBar">
                             <div class = "tab" v-on:click="postTab()"><span v-if = "!post.title">Untitled Post</span><span v-if = "post.title"> ${post.title}</span></div>
                             <div class = "tab" v-on:click="infoTab()" v-if = "activated && post.id == the_id">Info</div>

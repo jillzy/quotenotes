@@ -92,16 +92,38 @@ var app = function() {
 
 
     self.filterA = function() {
+        self.vue.hideID = [];
         var v=document.getElementsByName("filterA")[0];
         self.vue.chosenTag = v.value;
         console.log(self.vue.chosenTag);
+
+        for (var i = 0; i < self.vue.posts.length; i++) {
+             if (self.vue.chosenTag == self.vue.posts[i].author) {
+                 self.vue.hideID.push(self.vue.posts[i].id);
+
+                 console.log(self.vue.hideID);
+             }
+
+        }
+
+
     }
 
 
     self.filterB = function() {
+        self.vue.hideID = [];
         var v=document.getElementsByName("filterB")[0];
         self.vue.chosenTag = v.value;
         console.log(self.vue.chosenTag);
+
+        for (var i = 0; i < self.vue.posts.length; i++) {
+             if (self.vue.chosenTag == self.vue.posts[i].book) {
+                 self.vue.hideID.push(self.vue.posts[i].id);
+
+                 console.log(self.vue.hideID);
+             }
+
+        }
     }
 
 
@@ -441,6 +463,8 @@ var app = function() {
             set2: null,
             list: [],
             list2: [],
+            hide: false,
+            hideID: [],
             chosenTag: null
 
         },
