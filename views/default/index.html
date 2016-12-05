@@ -151,15 +151,14 @@
                                     <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
                                         <div class="form-group" id="no_table_artist__row">
                                             <div>
-                                                <p><b>Post Title: </b><span v-if = !isEditingInfo>
-                                                    <span v-if = "!post.title">Untitled Post</span><span v-if = "post.title"> ${post.title}</span>
+                                                <p><b>Title: </b></p>
                                                 </p>
                                                 <input class="form-control string" id="editTitle" v-model="form_edit_title" type="text"/>
-                                                <p><b>Book: </b><span v-if = !isEditingInfo>${post.book}</span></p>
+                                                <p><b>Book: </b></p>
                                                 <input class="form-control string" id="editBook" v-model="form_edit_book" type="text"/>
-                                                <p><b>Author: </b><span v-if = !isEditingInfo>${post.author}</span></p>
+                                                <p><b>Author: </b></p>
                                                 <input class="form-control string" id="editAuthor" v-model="form_edit_author" type="text"/>
-                                                <p><b>Pages: </b><span v-if = !isEditingInfo>${post.pgs}</span></p>
+                                                <p><b>Pages: </b></p>
                                                 <input class="form-control string" id="editAuthor" v-model="form_edit_pgs" type="text"/>
                                             </div>
                                         </div>
@@ -182,17 +181,17 @@
                             <div id = "tag" v-if = "showTags && post.id == the_id">
                                 <p>Book, quote, reflection, other, tags, here</p>
 
+
                                 <div id = "edit_tags_form" id="editTags" v-if = "isEditingTags">
                                     <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
                                         <div class="form-group" id="no_table_artist__row">
                                             <div>
-                                                <input class="form-control string" id="tagsTextbox" v-model="form_edit_content" type="text" style="width: 1000px;"/>
+                                                <input class="form-control string" id="tagsTextbox" v-model="form_edit_tags" type="text" style="width: 1000px;"/>
                                             </div>
                                         </div>
                                         <div class="form-group" id="submit_record__row">
                                             <div>
-                                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="handle_form_stuff()"/>
-                                                <input class="btn btn-primary" id="edit_post_cancel" type="submit" value="Cancel" v-on:click="postTab()"/>
+                                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="editTags()"/>
                                             </div>
                                         </div>
                                     </form>
