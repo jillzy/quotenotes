@@ -75,11 +75,19 @@ var app = function() {
 
         self.vue.list = Array.from(self.vue.set);
         console.log(self.vue.list);
-        /*
-        console.log(self.vue.set);
 
-        for (var key in self.vue.set) { console.log(key); }
-        */
+
+        for (b in self.vue.posts) {
+            self.vue.list2.push(self.vue.posts[b].book);
+        }
+        self.vue.set2 = new Set(self.vue.list2);
+
+        self.vue.set2.forEach(function(value) {
+            console.log(value);
+        });
+
+        self.vue.list2 = Array.from(self.vue.set2);
+        console.log(self.vue.list2);
     };
 
 
@@ -93,8 +101,8 @@ var app = function() {
             {
                 post_content: self.vue.form_post_content,
                 title: self.vue.form_post_title,
-                author: "Unknown",
-                book: "Unknown",
+                author: "Unknown Author",
+                book: "Unknown Book",
                 pgs: "N/A",
                 tags: "No tags"
 //                user_email: self.vue.form_user_email,
@@ -423,7 +431,9 @@ var app = function() {
             untitled: false,
             a: null,
             set: null,
-            list: []
+            set2: null,
+            list: [],
+            list2: []
 
         },
 

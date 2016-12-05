@@ -72,9 +72,12 @@
 
                     filtering post
                     <div class="form-group" id="submit_record__row">
-                        <div v-for="post in posts">
-                            <span v-if = "post.book && post.book!='Unknown'"><input type="checkbox">${post.book}</span><br>
-                            <span v-if = "post.author && post.author!='Unknown'"><input type="checkbox">${post.author}</span><br>
+                        <div v-for="author in list">
+                            <span v-if = "author && author!='Unknown'"><input type="checkbox">${author}</span><br>
+                        </div>
+
+                        <div v-for="book in list2">
+                            <span v-if = "book && book!='Unknown'"><input type="checkbox">${book}</span><br>
                         </div>
                         <input class="btn btn-primary" id="add_post_submit" type="submit" value="Submit" v-on:click="closeFilterPost()"/>
                     </div>
