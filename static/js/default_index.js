@@ -91,9 +91,15 @@ var app = function() {
     };
 
 
-    self.filterA = function(dropdown) {
-        console.log("filterA");
+    self.filterA = function() {
         var v=document.getElementsByName("filterA")[0];
+        self.vue.chosenTag = v.value;
+        console.log(self.vue.chosenTag);
+    }
+
+
+    self.filterB = function() {
+        var v=document.getElementsByName("filterB")[0];
         self.vue.chosenTag = v.value;
         console.log(self.vue.chosenTag);
     }
