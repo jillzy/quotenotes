@@ -8,6 +8,7 @@
     var add_post_url = "{{=URL('api', 'add_post', user_signature=True)}}";
     var del_post_url = "{{=URL('api', 'del_post', user_signature=True)}}";
     var edit_post_url = "{{=URL('api', 'edit_post')}}";
+    var edit_tags_url = "{{=URL('api', 'edit_tags')}}";
 </script>
 {{end}}
 
@@ -169,7 +170,7 @@
                             </div>
 
                             <div id = "tag" v-if = "showTags && post.id == the_id">
-                                <p>Book, quote, reflection, other, tags, here ${post.tags}</p>
+                                <p>${post.tags}</p>
 
 
                                 <div id = "edit_tags_form" id="editTags" v-if = "isEditingTags">
