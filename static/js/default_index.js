@@ -91,6 +91,11 @@ var app = function() {
     };
 
 
+    self.filter = function() {
+        console.log("filter");
+    }
+
+
     self.clear_post_form = function () {
     };
 
@@ -192,7 +197,6 @@ var app = function() {
                 post_content: self.vue.form_edit_content,
                 title: self.vue.form_edit_title, //should be the original
                 book: self.vue.original_book,
-//                title: self.vue.original_title,
                 author: self.vue.original_author,
                 pgs: self.vue.original_pgs,
                 tags: self.vue.original_tags
@@ -201,13 +205,7 @@ var app = function() {
 
         self.vue.posts[self.vue.the_post_idx].post_content = self.vue.form_edit_content;
         self.vue.posts[self.vue.the_post_idx].title = self.vue.form_edit_title;
-/*        self.vue.posts[self.vue.the_post_idx].title = self.vue.form_edit_title;
-        console.log(self.vue.posts[self.vue.the_post_idx].title);
-        if (self.vue.posts[self.vue.the_post_idx].title) {
-            self.vue.untitled = false;
-        } else { self.vue.untitled = true;}
 
-*/
         console.log(self.vue.posts[self.vue.the_post_idx].post_content);
         self.vue.showPost = true;
         self.vue.showInfo = false;
@@ -461,7 +459,8 @@ var app = function() {
             toggleEditInfo: self.toggleEditInfo,
             toggleEditTags: self.toggleEditTags,
             edit: self.edit,
-            editTags: self.editTags
+            editTags: self.editTags,
+            filter: self.filter
         }
 
     });
