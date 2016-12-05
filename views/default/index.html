@@ -51,16 +51,6 @@
 
                     <div class="form-group" id="no_table_artist__row">
                         <div>
-<<<<<<< HEAD
-                            <input class="form-control string" id="post_textbox" v-model="form_post_content" placeholder="your message here"
-                                   type="text" style="position: relative;  width: 100%; height: 150px;"/>
-                            <span class="help-block"></span>
-                        </div>
-                        <div class="form-group" id="submit_record__row">
-                            <div>
-                                <input class="btn btn-primary" id="add_post_submit" type="submit" value="Submit" style="float:right;"/>
-                            </div>
-=======
                             <input class="form-control string" id="title_textbox" v-model="form_post_title"
                                    type="text"/>
                             <input class="form-control string" id="post_textbox" v-model="form_post_content"
@@ -71,7 +61,6 @@
                     <div class="form-group" id="submit_record__row">
                         <div>
                             <input class="btn btn-primary" id="add_post_submit" type="submit" value="Submit" v-on:click="closeAddPost()"/>
->>>>>>> master
                         </div>
                     </div>
                 </form>
@@ -102,9 +91,10 @@
                         <div class = "entryTopBar">
                             <div class = "tab" v-on:click="postTab()"><span v-if = "!post.title">Untitled Post</span><span v-if = "post.title"> ${post.title}</span></div>
                             <div class = "tab" v-on:click="infoTab()" v-if = "activated && post.id == the_id">Info</div>
-                            <div class = "tab" v-on:click="tagsTab()" v-if = "activated && post.id == the_id">Tags</div>
                             <div class = "tab" v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email,
-                                post.title, post.book, post.author, post.pgs), editTab()"
+                                post.title, post.book, post.author, post.pgs, post.tags), tagsTab() " v-if = "activated && post.id == the_id">Tags</div>
+                            <div class = "tab" v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email,
+                                post.title, post.book, post.author, post.pgs, post.tags), editTab()"
                                 v-if = "activated && post.id == the_id">Edit</div>
                             <div class = "tab" v-on:click="delTab()" v-if = "activated && post.id == the_id">Delete</div>
                         </div>
@@ -179,7 +169,7 @@
                             </div>
 
                             <div id = "tag" v-if = "showTags && post.id == the_id">
-                                <p>Book, quote, reflection, other, tags, here</p>
+                                <p>Book, quote, reflection, other, tags, here ${post.tags}</p>
 
 
                                 <div id = "edit_tags_form" id="editTags" v-if = "isEditingTags">
@@ -191,13 +181,13 @@
                                         </div>
                                         <div class="form-group" id="submit_record__row">
                                             <div>
-                                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="edit(post._idx, post.id, post.post_content)"/>
+                                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="editTags(post._idx, post.id, post.post_content)"/>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
 
-                                <button class="btn btn-default" v-if = "!isEditingTags" v-on:click="toggleEditTags()" style = "margin-top: 10px;">Edit Tags</button>
+                                <button class="btn btn-default" v-if = "!isEditingTags" v-on:click="toggleEditTags(post.tags)" style = "margin-top: 10px;">Edit Tags</button>
                                 <button class="btn btn-default" v-if = "isEditingTags" v-on:click="toggleEditTags()" style = "margin-top: 10px;">Stop Editing</button>
 
                             </div>

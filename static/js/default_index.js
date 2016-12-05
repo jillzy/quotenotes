@@ -78,7 +78,8 @@ var app = function() {
                 title: self.vue.form_post_title,
                 author: "Unknown",
                 book: "Unknown",
-                pgs: "N/A"
+                pgs: "N/A",
+                tags: "No tags"
 //                user_email: self.vue.form_user_email,
 //                user_name: self.vue.form_user_name,
 //                created_on: self.vue.form_created_on,
@@ -122,7 +123,7 @@ var app = function() {
         )
     };
 
-    self.edit_post_button = function (post_id, content, _idx, poster_email, title, book, author, pgs) {
+    self.edit_post_button = function (post_id, content, _idx, poster_email, title, book, author, pgs, tags) {
         // The button to add a post has been pressed.
         if (self.vue.the_email == poster_email) {
             self.vue.show_post = false;
@@ -136,6 +137,7 @@ var app = function() {
         self.vue.original_book = book;
         self.vue.original_author = author;
         self.vue.original_pgs = pgs;
+        self.vue.original_tags = tags;
         self.vue.form_edit_title = self.vue.original_title;
         self.vue.form_edit_content = self.vue.original_content;
         self.vue.the_id = post_id;
@@ -165,9 +167,10 @@ var app = function() {
                 post_content: self.vue.form_edit_content,
                 title: self.vue.form_edit_title, //should be the original
                 book: self.vue.original_book,
-                title: self.vue.original_title,
+//                title: self.vue.original_title,
                 author: self.vue.original_author,
                 pgs: self.vue.original_pgs,
+                tags: self.vue.original_tags
             }
         );
 
@@ -279,7 +282,7 @@ var app = function() {
                 book: self.vue.form_edit_book,
                 pgs: self.vue.form_edit_pgs,
                 post_content: self.vue.original_content,
-                tags: self.vue.tags
+                tags: self.vue.original_tags
             }
         );
         console.log(self.vue.the_post_idx);
@@ -287,9 +290,33 @@ var app = function() {
         self.vue.posts[self.vue.the_post_idx].author = self.vue.form_edit_author;
         self.vue.posts[self.vue.the_post_idx].book = self.vue.form_edit_book;
         self.vue.posts[self.vue.the_post_idx].pgs = self.vue.form_edit_pgs;
-       self.vue.posts[self.vue.the_post_idx].tags = self.vue.form_edit_tags;
 
     }
+
+
+        self.editTags = function(idx, id, content) {
+        console.log("edit()");
+        self.vue.the_post_idx = idx;
+        self.vue.the_id = id;
+        self.vue.original_content = content;
+        $.post(edit_post_url/* + "?" + $.param(_idx=self.vue.the_post_idx),*/,
+            {
+                post_id: self.vue.the_id,
+                _idx: self.vue.the_post_idx,
+                title: self.vue.original_title,
+                author: self.vue.original_author,
+                book: self.vue.original_book,
+                pgs: self.vue.original_pgs,
+                post_content: self.vue.original_content,
+                tags: self.vue.form_edit_tags
+            }
+        );
+        console.log(self.vue.the_post_idx);
+        self.vue.posts[self.vue.the_post_idx].tags = self.vue.form_edit_tags;
+
+    }
+
+
 
     self.stopEditInfo = function() {
         self.vue.isEditingInfo = false;
@@ -305,8 +332,9 @@ var app = function() {
 
     }
 
-    self.toggleEditTags = function() {
+    self.toggleEditTags = function(tags) {
         self.vue.isEditingTags = !self.vue.isEditingTags;
+        self.vue.form_edit_tags = tags;
     }
 
 
@@ -363,6 +391,7 @@ var app = function() {
             original_author: "",
             original_book: "",
             original_pgs: "",
+            original_tags: "",
             is_user: false,
             the_email: "None",
             can_edit: false,
