@@ -91,9 +91,11 @@ var app = function() {
     };
 
 
-    self.filter = function() {
-        console.log("filter");
-
+    self.filterA = function(dropdown) {
+        console.log("filterA");
+        var v=document.getElementsByName("filterA")[0];
+        self.vue.chosenTag = v.value;
+        console.log(self.vue.chosenTag);
     }
 
 
@@ -432,7 +434,8 @@ var app = function() {
             set: null,
             set2: null,
             list: [],
-            list2: []
+            list2: [],
+            chosenTag: null
 
         },
 
@@ -461,7 +464,8 @@ var app = function() {
             toggleEditTags: self.toggleEditTags,
             edit: self.edit,
             editTags: self.editTags,
-            filter: self.filter
+            filterA: self.filterA,
+            filterB: self.filterB
         }
 
     });
