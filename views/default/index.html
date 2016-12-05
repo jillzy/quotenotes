@@ -22,7 +22,7 @@
             <div id=site_title style="">
                 QuoteNotes
             </div>
-            
+
             <div class = about>
                 <img src = https://clipartion.com/wp-content/uploads/2015/10/clip-art-of-a-pencil.png height="220px" width ="170px">
                 <br><br>Submit and organize your favourite quotes and reflections<br>
@@ -37,7 +37,7 @@
                 <img src = http://cliparts.co/cliparts/Bca/KKB/BcaKKBR7i.png height = "250px" width = "250px">
                 <br>Design and track reading and writing goals<br>
             </div>
-            
+
             <div id = login>
                 <a href="{{=URL('default', 'user', args=['login'])}}">Log in</a>
             </div>
@@ -73,7 +73,8 @@
                     filtering post
                     <div class="form-group" id="submit_record__row">
                         <div v-for="post in posts">
-                            <span v-if = "post.tags"><input type="checkbox" name="vehicle" value="Car" checked="checked">${post.tags}</span><br>
+                            <span v-if = "post.book && post.book!='Unknown'"><input type="checkbox">${post.book}</span><br>
+                            <span v-if = "post.author && post.author!='Unknown'"><input type="checkbox">${post.author}</span><br>
                         </div>
                         <input class="btn btn-primary" id="add_post_submit" type="submit" value="Submit" v-on:click="closeFilterPost()"/>
                     </div>
@@ -209,7 +210,7 @@
         <div>
     </div>
 
-</div>
+</div></div></div>
 
 
 <script src="{{=URL('static', 'js/default_index.js')}}"></script>

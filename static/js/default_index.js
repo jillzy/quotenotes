@@ -60,9 +60,23 @@ var app = function() {
     };
 
     self.filter_post_button = function () {
+        console.log("filter post");
         if (self.vue.logged_in){
             self.vue.isFilteringPost = !self.vue.isFilteringPost;
         }
+        for (a in self.vue.posts) {
+            self.vue.list.push(self.vue.posts[a].author);
+        }
+        self.vue.set = new Set(self.vue.list);
+
+        self.vue.set.forEach(function(value) {
+            console.log(value);
+        });
+/*
+        console.log(self.vue.set);
+
+        for (var key in self.vue.set) { console.log(key); }
+        */
     };
 
 
@@ -403,7 +417,10 @@ var app = function() {
             isEditingInfo: false,
             isEditingTags: false,
             isFilteringPost: false,
-            untitled: false
+            untitled: false,
+            a: null,
+            set: null,
+            list: []
 
         },
 
@@ -418,7 +435,6 @@ var app = function() {
             get_posts: self.get_posts,
             add_post: self.add_post,
             del_post: self.delete_post,
-            handle_form_stuff2: self.handle_form_stuff2,
             hide: self.hide,
             debug: self.debug,
             postTab: self.postTab,
