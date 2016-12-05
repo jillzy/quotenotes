@@ -11,8 +11,24 @@ body {
     color: black;
 }
 
+#page_boxed {
+    display:block; margin:0; padding:0; 
+    
+}
+
+#button_side {
+    float:left; display:block; margin:0; padding:0; width:8%; height:1000px; 
+    cursor: pointer;
+    overflow: auto;
+    margin-top: 150px;
+}
+
+.published_posts {
+    float:inherit;
+}
+
 .popup {
-  width:70%;
+  width:40%;
   height:400px;
   background: #56494c;
   color: white;
@@ -26,18 +42,12 @@ body {
 }
 
 .addButton {
-  cursor: pointer;
-  position: fixed;
+  position:fixed;
   background-color: #56494c;
   color: #afbfc0;
-  margin-left: 0.001%;
-    padding-left: 10px;
-    padding-bottom: 15px;
+  padding: 5px 25px;
   font-size: 48px; /*dynamic*/
   border-radius: 8px 0 0 8px;
-    width:50px;
-    height: 50px;
-    
 }
 
 .addButton:hover {
@@ -46,12 +56,11 @@ body {
 }
 
 .filterButton {
-  cursor: pointer;
   position: fixed;
   background-color: #56494c;
   color: #afbfc0;
-  margin-top: 250px;
-  margin-left: 0.01%;
+  margin-top: 100px;
+  margin-left: 0.001%;
   padding: 5px 25px;
   font-size: 48px; /*dynamic*/
   border-radius: 8px 0 0 8px;
@@ -121,8 +130,8 @@ div.tab {
 }
 
 .form-horizontal {
-  padding-left:20px;
-  width:50%;
+  padding:10px;
+  width:100%;
 }
 
 #edit_form {

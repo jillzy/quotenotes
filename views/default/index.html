@@ -46,24 +46,25 @@
 
         <div id = "main_content" v-if = "logged_in">
 
-
-            <div v-if="is_adding_post" id="addPost" class = "popup">
+            <div v-if="is_adding_post" id="addPost" class = "popup" style="align:center;">
                 <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post">
 
                     <div class="form-group" id="no_table_artist__row">
                         <div>
                             <input class="form-control string" id="title_textbox" v-model="form_post_title"
-                                   type="text"/>
+                                   type="text" placeholder="Title" 
+                                   style="position: relative; margin: auto; width: 70%;"/>
                             <input class="form-control string" id="post_textbox" v-model="form_post_content"
-                                   type="text" style="position: relative; margin: auto; width: 80%; height: 300px;"/>
+                                   type="text" placeholder="Start quoting..." style="position: relative; margin: auto; width: 70%; height: 200px;"/>
                             <span class="help-block"></span>
                         </div>
-                    </div>
-                    <div class="form-group" id="submit_record__row">
-                        <div>
-                            <input class="btn btn-primary" id="add_post_submit" type="submit" value="Submit" v-on:click="closeAddPost()"/>
+                        <div class="form-group" id="submit_record__row">
+                            <div>
+                                <input class="btn btn-primary" id="add_post_submit" type="submit" value="Submit" v-on:click="closeAddPost()" style="margin-left:40%;"/>
+                            </div>
                         </div>
                     </div>
+                    
                 </form>
             </div>
 
@@ -82,128 +83,131 @@
 
 
 
+            <div id = "page_boxed">
+                <div id="button_side">
+                    <div class = "addButton" v-on:click="add_post_button()">+</div>
+                    <div class = "filterButton" v-on:click="filter_post_button()">=</div>
+                </div>
 
-
-            <div class = "addButton" v-on:click="add_post_button()">+</div>
-            <div class = "filterButton" v-on:click="filter_post_button()">o</div>
-            <div class="published_posts">
-                <div v-for="post in posts">
-                    <div id = "entryBlock" v-on:click="activate(post.id)">
-                        <div class = "entryTopBar">
-                            <div class = "tab" v-on:click="postTab()"><span v-if = "!post.title">Untitled Post</span><span v-if = "post.title"> ${post.title}</span></div>
-                            <div class = "tab" v-on:click="infoTab()" v-if = "activated && post.id == the_id">Info</div>
-                            <div class = "tab" v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email,
-                                post.title, post.book, post.author, post.pgs, post.tags), tagsTab() " v-if = "activated && post.id == the_id">Tags</div>
-                            <div class = "tab" v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email,
-                                post.title, post.book, post.author, post.pgs, post.tags), editTab()"
-                                v-if = "activated && post.id == the_id">Edit</div>
-                            <div class = "tab" v-on:click="delTab()" v-if = "activated && post.id == the_id">Delete</div>
-                        </div>
-                        <div id = "entry" class = "entry"><!--v-bind:style="{background: activeColour}"-->
-
-                            <div id = "edit_form" v-if="showEdit && post.id == the_id" id="edit_post_div">
-                                <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
-                                    <div class="form-group" id="no_table_artist__row">
-                                        <div>
-                                            <input class="form-control string" id="edit_textbox" v-model="form_edit_content" type="text" style="width: 1000px;"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" id="submit_record__row">
-                                        <div>
-                                            <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="handle_form_stuff()"/>
-                                        </div>
-                                    </div>
-                                </form>
+                <div class="published_posts" >
+                    <div v-for="post in posts">
+                        <div id = "entryBlock" v-on:click="activate(post.id)">
+                            <div class = "entryTopBar">
+                                <div class = "tab" v-on:click="postTab()"><span v-if = "!post.title">Untitled Post</span><span v-if = "post.title"> ${post.title}</span></div>
+                                <div class = "tab" v-on:click="infoTab()" v-if = "activated && post.id == the_id">Info</div>
+                                <div class = "tab" v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email,
+                                    post.title, post.book, post.author, post.pgs, post.tags), tagsTab() " v-if = "activated && post.id == the_id">Tags</div>
+                                <div class = "tab" v-on:click="edit_post_button(post.id, post.post_content, post._idx, post.user_email,
+                                    post.title, post.book, post.author, post.pgs, post.tags), editTab()"
+                                    v-if = "activated && post.id == the_id">Edit</div>
+                                <div class = "tab" v-on:click="delTab()" v-if = "activated && post.id == the_id">Delete</div>
                             </div>
+                            <div id = "entry" class = "entry"><!--v-bind:style="{background: activeColour}"-->
 
-
-
-                            <div id = "post" v-if = "(!showInfo && !showTags && !showDel && !showEdit && showPost) || post.id != the_id">
-                                <p class = "content">${post.post_content}</p>
-                            </div>
-
-
-                            <div id = "info" v-if = "showInfo && post.id == the_id">
-                                <!--<p><b>Posted by:</b> ${post.user_name}</p>
-                                <p><b>Posted on:</b> ${post.created_on}&nbsp;</p>
-                                <p><b>Updated on:</b> ${post.updated_on}<p>
-                                for the stuff under this: v-if category is quote or book?-->
-                                <div v-if = "!isEditingInfo">
-                                    <p><b>Post Title:</b> <span v-if = "!post.title">Untitled Post</span><span v-if = "post.title"> ${post.title}</span></p>
-
-                                    <p><b>Book: </b>${post.book}</p>
-
-                                    <p><b>Author: </b>${post.author}</p>
-
-                                    <p><b>Pages: </b>${post.pgs}</p>
-
-                                </div>
-                                <div id = "pgsForm" v-if = "isEditingInfo">
+                                <div id = "edit_form" v-if="showEdit && post.id == the_id" id="edit_post_div">
                                     <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
                                         <div class="form-group" id="no_table_artist__row">
                                             <div>
-                                                <p><b>Title: </b></p>
-                                                </p>
-                                                <input class="form-control string" id="editTitle" v-model="form_edit_title" type="text"/>
-                                                <p><b>Book: </b></p>
-                                                <input class="form-control string" id="editBook" v-model="form_edit_book" type="text"/>
-                                                <p><b>Author: </b></p>
-                                                <input class="form-control string" id="editAuthor" v-model="form_edit_author" type="text"/>
-                                                <p><b>Pages: </b></p>
-                                                <input class="form-control string" id="editAuthor" v-model="form_edit_pgs" type="text"/>
+                                                <input class="form-control string" id="edit_textbox" v-model="form_edit_content" type="text" style="width: 1000px;"/>
                                             </div>
                                         </div>
                                         <div class="form-group" id="submit_record__row">
                                             <div>
-                                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="edit(post._idx, post.id, post.post_content)"/>
+                                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="handle_form_stuff()"/>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
 
 
-                                <p><b>Posted On: </b>${post.created_on}</p>
 
-
-                                <button class="btn btn-default" v-if = "!isEditingInfo" v-on:click="toggleEditInfo(post.title, post.author, post.book, post.pgs)" style = "margin-top: 10px;">Edit Info</button>
-                                <button class="btn btn-default" v-if = "isEditingInfo" v-on:click="toggleEditInfo(post.title, post.author, post.book, post.pgs)" style = "margin-top: 10px;">Stop Editing</button>
-                            </div>
-
-                            <div id = "tag" v-if = "showTags && post.id == the_id">
-                                <p>${post.tags}</p>
-
-
-                                <div id = "edit_tags_form" id="editTags" v-if = "isEditingTags">
-                                    <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
-                                        <div class="form-group" id="no_table_artist__row">
-                                            <div>
-                                                <input class="form-control string" id="tagsTextbox" v-model="form_edit_tags" type="text" style="width: 1000px;"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group" id="submit_record__row">
-                                            <div>
-                                                <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="editTags(post._idx, post.id, post.post_content)"/>
-                                            </div>
-                                        </div>
-                                    </form>
+                                <div id = "post" v-if = "(!showInfo && !showTags && !showDel && !showEdit && showPost) || post.id != the_id">
+                                    <p class = "content">${post.post_content}</p>
                                 </div>
 
-                                <button class="btn btn-default" v-if = "!isEditingTags" v-on:click="toggleEditTags(post.tags)" style = "margin-top: 10px;">Edit Tags</button>
-                                <button class="btn btn-default" v-if = "isEditingTags" v-on:click="toggleEditTags()" style = "margin-top: 10px;">Stop Editing</button>
 
-                            </div>
+                                <div id = "info" v-if = "showInfo && post.id == the_id">
+                                    <!--<p><b>Posted by:</b> ${post.user_name}</p>
+                                    <p><b>Posted on:</b> ${post.created_on}&nbsp;</p>
+                                    <p><b>Updated on:</b> ${post.updated_on}<p>
+                                    for the stuff under this: v-if category is quote or book?-->
+                                    <div v-if = "!isEditingInfo">
+                                        <p><b>Post Title:</b> <span v-if = "!post.title">Untitled Post</span><span v-if = "post.title"> ${post.title}</span></p>
 
-                            <div id = "delete" v-if = "showDel && post.id == the_id">
-                                <p>Are you sure?</p>
-                                <input class="btn btn-primary" id="delete" type="submit" value="Delete" v-on:click="del_post(post.id)"/>
-                                <input class="btn btn-primary" id="delete" type="submit" value="Cancel" v-on:click="postTab()"/>
+                                        <p><b>Book: </b>${post.book}</p>
+
+                                        <p><b>Author: </b>${post.author}</p>
+
+                                        <p><b>Pages: </b>${post.pgs}</p>
+
+                                    </div>
+                                    <div id = "pgsForm" v-if = "isEditingInfo">
+                                        <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
+                                            <div class="form-group" id="no_table_artist__row">
+                                                <div>
+                                                    <p><b>Title: </b></p>
+                                                    </p>
+                                                    <input class="form-control string" id="editTitle" v-model="form_edit_title" type="text"/>
+                                                    <p><b>Book: </b></p>
+                                                    <input class="form-control string" id="editBook" v-model="form_edit_book" type="text"/>
+                                                    <p><b>Author: </b></p>
+                                                    <input class="form-control string" id="editAuthor" v-model="form_edit_author" type="text"/>
+                                                    <p><b>Pages: </b></p>
+                                                    <input class="form-control string" id="editAuthor" v-model="form_edit_pgs" type="text"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="submit_record__row">
+                                                <div>
+                                                    <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="edit(post._idx, post.id, post.post_content)"/>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+
+                                    <p><b>Posted On: </b>${post.created_on}</p>
+
+
+                                    <button class="btn btn-default" v-if = "!isEditingInfo" v-on:click="toggleEditInfo(post.title, post.author, post.book, post.pgs)" style = "margin-top: 10px;">Edit Info</button>
+                                    <button class="btn btn-default" v-if = "isEditingInfo" v-on:click="toggleEditInfo(post.title, post.author, post.book, post.pgs)" style = "margin-top: 10px;">Stop Editing</button>
+                                </div>
+
+                                <div id = "tag" v-if = "showTags && post.id == the_id">
+                                    <p>${post.tags}</p>
+
+
+                                    <div id = "edit_tags_form" id="editTags" v-if = "isEditingTags">
+                                        <form id = "edit" action="#" v-on:submit.prevent="edit_post" enctype="multipart/form-data" method="edit">
+                                            <div class="form-group" id="no_table_artist__row">
+                                                <div>
+                                                    <input class="form-control string" id="tagsTextbox" v-model="form_edit_tags" type="text" style="width: 1000px;"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="submit_record__row">
+                                                <div>
+                                                    <input class="btn btn-primary" id="edit_post_submit" type="submit" value="Update" v-on:click="editTags(post._idx, post.id, post.post_content)"/>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <button class="btn btn-default" v-if = "!isEditingTags" v-on:click="toggleEditTags(post.tags)" style = "margin-top: 10px;">Edit Tags</button>
+                                    <button class="btn btn-default" v-if = "isEditingTags" v-on:click="toggleEditTags()" style = "margin-top: 10px;">Stop Editing</button>
+
+                                </div>
+
+                                <div id = "delete" v-if = "showDel && post.id == the_id">
+                                    <p>Are you sure?</p>
+                                    <input class="btn btn-primary" id="delete" type="submit" value="Delete" v-on:click="del_post(post.id)"/>
+                                    <input class="btn btn-primary" id="delete" type="submit" value="Cancel" v-on:click="postTab()"/>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div v-if="has_more" class="show_more">
-                    <button class="btn btn-default" v-on:click="get_more()">Load more</button>
+                    <div v-if="has_more" class="show_more">
+                        <button class="btn btn-default" v-on:click="get_more()">Load more</button>
+                    </div>
                 </div>
             </div>
         <div>
